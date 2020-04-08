@@ -1,0 +1,254 @@
+{%  extends "layout.html" %}
+{% load static %}
+
+{% block styles %}
+
+<link href="{% static 'base/css/vendors/datatables/datatables.bundle.css' %}" rel="stylesheet" type="text/css" />
+
+{% endblock %}
+
+{% block pagejs %}
+
+<script src="{% static 'base/js/vendors/datatables/datatables.bundle.js' %}"></script>
+<script src="{% static 'base/js/vendors/summernote/summernote.js' %}"></script>
+
+<script>
+	$(document).ready(function() {
+  $('.summernote').summernote();
+});
+</script>
+
+{% endblock %}
+
+{% block title %} Viewing Ticket: {% endblock %}
+
+{% block main-content %}
+<!--Page Header-->
+
+				<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+					<!-- BEGIN: Subheader -->
+					<div class="m-subheader ">
+	<div class="d-flex align-items-center">
+			<div class="mr-auto">
+				<h3 class="m-subheader__title m-subheader__title--separator">Ticket #{{ ticketData.id }}</h3>
+			</div>
+		</div>
+	</div>
+					<!-- END: Subheader -->
+				<div class="m-content">
+					<div class="row">
+						<div class="col-xl-12">
+
+								<!--begin:: Widgets/Finance Summary-->
+								<div class="m-portlet m-portlet--skin-dark m-portlet--bordered-semi">
+									<div class="m-portlet__head">
+										<div class="m-portlet__head-caption">
+											<div class="m-portlet__head-title">
+												<span class="m-portlet__head-icon">
+													<i class="flaticon-statistics"></i>
+												</span>
+												<h3 class="m-portlet__head-text">
+													Ticket Summary
+												</h3>
+											</div>
+										</div>
+									</div>
+									<div class="m-portlet__body">
+										<strong>{{ ticketData.summary }}</strong>
+									</div>
+								</div>
+
+								<!--end:: Widgets/Finance Summary-->
+						</div>
+					</div>
+						<div class="row">
+							<div class="col-xl-6">
+
+								<!--begin:: Widgets/Finance Summary-->
+								<div class="m-portlet m-portlet--info m-portlet--head-solid-bg m-portlet--bordered ">
+									<div class="m-portlet__head">
+										<div class="m-portlet__head-caption">
+											<div class="m-portlet__head-title">
+												<h3 class="m-portlet__head-text">
+													Ticket Details
+												</h3>
+											</div>
+										</div>
+<div class="m-portlet__head-tools">
+											<ul class="m-portlet__nav">
+												<li class="m-portlet__nav-item">
+													<a href="#" class="m-portlet__nav-link btn btn-light m-btn m-btn--air">
+														Edit
+													</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+
+									<div class="m-portlet__body">
+										<div class="m-widget12">
+											<div class="m-widget12__item">
+												<span class="m-widget12__text1">Ticket Contact<br><span>{{ ticketData.contactName }}</span></span>
+												<span class="m-widget12__text2">Contact Email<br><span>{{ ticketData.contactEmailAddress }}</span></span>
+											</div>
+											<div class="m-widget12__item">
+												<span class="m-widget12__text1">Contact Phone<br><span>{{ ticketData.contactPhoneNumber }}</span></span>
+												<span class="m-widget12__text2">Current Status<br><span>{{ticketData.status.name}}</span></span>
+											</div>
+											<div class="m-widget12__item">
+												<span class="m-widget12__text1">Assigned Techinican(s)<br><span>
+													{% for item in resources %}
+														{{ item.member.name }} {% if forloop.last %} {% else %}, {%endif%}
+													{%endfor%}
+												</span></span>
+												<span class="m-widget12__text2">Next Estimated Contact Date<br><span>{{ticketData.requiredDate|stringformat:".10s"}}</span></span>
+											</div>
+											<div class="m-widget12__item">
+												<span class="m-widget12__text1">Input Source<br><span>{{ ticketData.source.name }}</span></span>
+												<span class="m-widget12__text2">Date Entered<br><span>{{ ticketData.dateEntered|stringformat:".10s" }}</span></span>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!--end:: Widgets/Finance Summary-->
+							</div>
+							<div class="col-xl-6">
+
+								<!--begin:: Widgets/Support Tickets -->
+								<div class="m-portlet m-portlet--info m-portlet--head-solid-bg m-portlet--bordered ">
+									<div class="m-portlet__head">
+										<div class="m-portlet__head-caption">
+											<div class="m-portlet__head-title">
+												<h3 class="m-portlet__head-text">
+													Ticketing Notes
+												</h3>
+											</div>
+										</div>
+<div class="m-portlet__head-tools">
+											<ul class="m-portlet__nav">
+												<li class="m-portlet__nav-item">
+													<button type="button" class="btn btn-lg btn-air btn-warning" data-toggle="modal" data-target="#m_modal_6">Update Ticket</button>
+												</li>
+											</ul>
+										</div>
+									</div>
+									<div class="m-portlet__body"><div class="m-scrollable m-scroller ps ps--active-y" data-scrollbar-shown="true" data-scrollable="true" data-height="450" style="overflow:hidden; height:450px">
+
+										<div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 300px; right: 4px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 40px;"></div></div>
+										<div class="m-accordion m-accordion--bordered" id="m_accordion_6" role="tablist">
+
+											<!--begin::Item-->
+											{% for item in ticketDetails %}
+											{% if item.member.id is not None and item.member.id != 193 %}
+											<div class="m-accordion__item  m-accordion__item--info" >
+												<div class="m-accordion__item-head" role="tab" id="m_accordion_6_item_{{ forloop.counter }}_head" data-toggle="collapse" href="#m_accordion_6_item_{{ forloop.counter }}_body" aria-expanded="{% if forloop.counter is 1 %}true{% else %}false{%endif%}">
+													<span class="m-accordion__item-icon"><i class="fa fa-user-cog"></i></span>
+													<span class="m-accordion__item-title">{{ item.member.name }} </span>
+													<div class="m-portlet__head-tools" style="width:80px">
+
+													</div>
+												</div>
+												<div class="m-accordion__item-body {% if forloop.counter is 1 %}collapse show{% else %}{%endif%}" id="m_accordion_6_item_{{ forloop.counter }}_body" role="tabpanel" aria-labelledby="m_accordion_6_item_{{ forloop.counter }}_head" data-parent="#m_accordion_6" style="">
+													<div class="m-accordion__item-content">
+														<p>
+															{{ item.notes|linebreaks }}
+														</p>
+													</div>
+												</div>
+											</div>
+										<div class="m-separator m-separator--space m-separator--dashed"></div>{% else %}
+
+
+											<div class="m-accordion__item  m-accordion__item--warning" >
+												<div class="m-accordion__item-head" role="tab" id="m_accordion_6_item_{{ forloop.counter }}_head" data-toggle="collapse" href="#m_accordion_6_item_{{ forloop.counter }}_body" aria-expanded="true">
+													<span class="m-accordion__item-icon"><i class="fa fa-envelope"></i></span>
+													<span class="m-accordion__item-title">{% if item.contact.id is not None %} {{ item.contact.name }} {% else %} {{ item.member.name }} {%endif%}</span>													<div class="m-portlet__head-tools" style="width:80px">
+														<ul class="m-porlet__nav">
+														<li class="m-portlet__nav-item">
+													<a href="#" m-portlet-tool="toggle" class="m-portlet__nav-link m-portlet__nav-link--icon" aria-describedby="tooltip_cjtk6l566l"><i class="fa fa-angle-down"></i></a>
+												<div class="m-tooltip m-tooltip--portlet tooltip bs-tooltip-top" role="tooltip" id="tooltip_cjtk6l566l" aria-hidden="true" x-placement="top" style="position: absolute; will-change: transform; visibility: hidden; top: 0px; left: 0px; transform: translate3d(589px, -32px, 0px);">                            <div class="tooltip-arrow arrow" style="left: 44px;"></div>
+													<div class="tooltip-inner">Collapse</div>
+												</div>
+														</li>
+														</ul>
+													</div>
+
+
+												</div>
+												<div class="m-accordion__item-body collapse show" id="m_accordion_6_item_{{ forloop.counter }}_body" role="tabpanel" aria-labelledby="m_accordion_6_item_{{ forloop.counter }}_head" data-parent="#m_accordion_6" style="">
+													<div class="m-accordion__item-content">
+														<p>
+															{{ item.text|linebreaks }}
+														</p>
+													</div>
+												</div>
+											</div><div class="m-separator m-separator--space m-separator--dashed"></div>
+											{% endif%}
+											{% endfor %}
+
+											<!--end::Item-->
+
+										</div>
+										</div>
+									</div>
+								</div>
+						<div class="modal fade" id="m_modal_6" tabindex="-1" role="dialog" aria-labelledby="updateTicket" style="display: none;">
+							<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="exampleModalLongTitle">Insert a Ticket Update</h5>
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">×</span>
+										</button>
+									</div>
+									<form method="POST" class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed" action="{% url  'updateticket' ticketData.id %}">
+										<div class="modal-body">
+
+												{% csrf_token %}
+												<div class="form-group m-form__group row">
+													<input type="hidden" name="id" value="{{ userData.id}}">
+													<input type="hidden" name="ticketid" value="{{ ticketData.id }}">
+												<label class="col-lg-2 col-form-label">Contact</label>
+													<div class="col-lg-4">
+												<input class="form-control m-input" type="text" disabled="disabled" placeholder="{{ userData.firstName }} {{ userData.lastName }}" name="contact">
+													</div>
+													<label class="col-lg-2 col-form-label">Contact Email</label>
+													<div class="col-lg-4">
+												<input class="form-control m-input" type="text" disabled="disabled" placeholder="{{ userData.firstName }} {{ userData.lastName }}" name="contactEmail">
+												</div>
+												</div>
+												<div class="form-group m-form__group row">
+
+													<textarea id="text" name="text"></textarea>
+
+												</div>
+
+
+
+
+
+
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-secondary btn-light" data-dismiss="modal">Close Dialog</button>
+											<input class="btn btn-primary " type="submit"></input>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+
+							</div>
+						</div>
+
+				</div>
+				</div>
+
+
+
+
+
+
+        {% endblock %}

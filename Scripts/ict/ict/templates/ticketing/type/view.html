@@ -1,0 +1,150 @@
+	{% extends "layout.html" %}
+	{% block title %} Open Projects Listing {% endblock %}
+	{% load static %}
+
+	{% block style %}
+	<link href="{% static 'base/css/vendors/select/bootstrap-select.css' %}" rel="stylesheet">
+	{% endblock %}
+
+	{% block pagejs %}
+
+	<script src="{% static 'base/js/jquery.validate.js' %}"></script>
+	<script src="{% static 'base/js/additional-methods.js' %}"></script>
+	<script src="{% static 'base/js/wizard.js' %}"></script>
+	<script src="{% static 'base/js/vendors/select/bootstrap-select.js' %}"></script>
+	<script src="{% static 'base/js/jquery.bootstrap.wizard.js' %}"></script>
+	{% endblock %}
+
+	{% block main-content %}
+	<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+		<!-- BEGIN: Subheader -->
+		<div class="m-subheader ">
+		<div class="d-flex align-items-center">
+			<div class="mr-auto">
+				<h3 class="m-subheader__title m-subheader__title--separator">New Ticket</h3>
+					<ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+						<li class="m-nav__item m-nav__item--home">
+							<a href="#" class="m-nav__link m-nav__link--icon">
+							   <i class="m-nav__link-icon fa fa-ticket-alt"></i>
+							</a>
+						</li>
+					</ul>
+			</div>
+		</div>
+		</div>
+	<!-- END: Subheader -->
+
+
+		<div class="m-content">
+
+			<div class="m-portlet m-portlet--full-height">
+				<!-- main card -->
+				<div class="m-portlet__head">
+					<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<h3 class="m-portlet__head-text">
+							Select Ticket Type
+						</h3>
+					</div>
+					<div class="m-portlet__head-tools">
+						<ul class="m-portlet__nav">
+							<li class="m-portlet__nav-item">
+								<a href="#" data-toggle="m-tooltip" class="m-portlet__nav-link m-portlet__nav-link--icon" data-direction="left" data-width="auto" title="" data-original-title="Below will allow you to select pre-built forms for ticketing, or select 'Create Ticket' for a default ticket.">
+									<i class="fa fa-info"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				</div>
+
+
+
+
+					<form id="form-wizard-onboarding" method="post" name="form-wizard-onboarding m_form" id="" novalidate="novalidate">
+						{% csrf_token %}
+
+					</form>
+
+
+
+
+
+
+				<div class="m-portlet--body">
+<div class="m-pricing-table-1">
+									<div class="m-pricing-table-1__items row">
+										<div class="m-pricing-table-1__item col-lg-3">
+											<div class="m-pricing-table-1__visual">
+												<div class="m-pricing-table-1__hexagon1"></div>
+												<div class="m-pricing-table-1__hexagon2"></div>
+												<span class="m-pricing-table-1__icon m--font-brand"><i class="fa fa-ticket-alt"></i></span>
+											</div>
+											<span class="m-pricing-table-1__price">Normal Ticket</span>
+											<span class="m-pricing-table-1__description" style="padding-left: 45px; padding-right:25px;">
+												Select this option to create a brand new ticket without any templates assigned.
+											</span>
+											<div class="m-pricing-table-1__btn"><a href="{% url 'newtickettype' 1 %}">
+												<button type="button" class="btn btn-brand m-btn m-btn--custom m-btn--pill m-btn--wide m-btn--uppercase m-btn--bolder m-btn--sm">Select</button>
+											</a>
+											</div>
+										</div>
+										<div class="m-pricing-table-1__item col-lg-3">
+											<div class="m-pricing-table-1__visual">
+												<div class="m-pricing-table-1__hexagon1"></div>
+												<div class="m-pricing-table-1__hexagon2"></div>
+												<span class="m-pricing-table-1__icon m--font-accent"><i class="fa fa-user"></i></span>
+											</div>
+											<span class="m-pricing-table-1__price">New Employee</span>
+											<span class="m-pricing-table-1__description" style="padding-left: 45px; padding-right:25px;">
+												Select this option when you are onboarding a new employee, this allows us to collect the proper information.
+											</span>
+											<div class="m-pricing-table-1__btn"><a href="{% url 'newtickettype' 2 %}">
+												<button type="button" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--wide m-btn--uppercase m-btn--bolder m-btn--sm">Select</button>
+											</a>
+											</div>
+										</div>
+										<div class="m-pricing-table-1__item col-lg-3">
+											<div class="m-pricing-table-1__visual">
+												<div class="m-pricing-table-1__hexagon1"></div>
+												<div class="m-pricing-table-1__hexagon2"></div>
+												<span class="m-pricing-table-1__icon m--font-focus"><i class="fa  fa-money-bill"></i></span>
+											</div>
+											<span class="m-pricing-table-1__price">Sales Ticket</span>
+											<span class="m-pricing-table-1__description" style="padding-left: 45px; padding-right:25px;">
+												Select this option if you would like to submit a ticket to our sales/purchasing department.
+											</span>
+											<div class="m-pricing-table-1__btn"><a href="{% url 'newtickettype' 3 %}">
+												<button type="button" class="btn btn-focus m-btn m-btn--custom m-btn--pill m-btn--wide m-btn--uppercase m-btn--bolder m-btn--sm">Select</button>
+											</a>
+											</div>
+										</div>
+										<div class="m-pricing-table-1__item col-lg-3">
+											<div class="m-pricing-table-1__visual">
+												<div class="m-pricing-table-1__hexagon1"></div>
+												<div class="m-pricing-table-1__hexagon2"></div>
+												<span class="m-pricing-table-1__icon m--font-danger"><i class="fa fa-exclamation-triangle
+"></i></span>
+											</div>
+											<span class="m-pricing-table-1__price">Critical Issue</span>
+											<span class="m-pricing-table-1__description" style="padding-left: 45px; padding-right:25px;">
+												<b><i class="fa fa-exclamation"></i>  SELECT THIS OPTION ONLY IF MULTIPLE PEOPLE ARE UNABLE TO WORK <i class="fa fa-exclamation"></i></b>
+											</span>
+											<div class="m-pricing-table-1__btn">
+												<a href="{% url 'newtickettype' 4 %}">
+												<button type="button" class="btn btn-danger m-btn m-btn--custom m-btn--pill m-btn--wide m-btn--uppercase m-btn--bolder m-btn--sm">Select</button>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+
+				</div>
+		</div>
+
+	</div>
+
+		{% endblock %}
+
+

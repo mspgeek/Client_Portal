@@ -1,0 +1,203 @@
+	{% extends "layout.html" %}
+	{% block title %} Open Projects Listing {% endblock %}
+	{% load static %}
+
+	{% block style %}
+	<link href="{% static 'base/css/vendors/select/bootstrap-select.css' %}" rel="stylesheet">
+	{% endblock %}
+
+	{% block pagejs %}
+
+	<script src="{% static 'base/js/jquery.validate.js' %}"></script>
+	<script src="{% static 'base/js/additional-methods.js' %}"></script>
+
+	<script src="{% static 'base/js/vendors/select/bootstrap-select.js' %}"></script>
+
+	{% endblock %}
+
+	{% block main-content %}
+	<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+		<!-- BEGIN: Subheader -->
+		<div class="m-subheader ">
+		<div class="d-flex align-items-center">
+			<div class="mr-auto">
+				<h3 class="m-subheader__title m-subheader__title--separator">Normal Ticket</h3>
+					<ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+						<li class="m-nav__item m-nav__item--home">
+							<a href="#" class="m-nav__link m-nav__link--icon">
+							   <i class="m-nav__link-icon fa fa-ticket-alt"></i>
+							</a>
+						</li>
+					</ul>
+			</div>
+		</div>
+		</div>
+	<!-- END: Subheader -->
+
+
+		<div class="m-content">
+
+			<div class="m-portlet m-portlet--full-height">
+				<!-- main card -->
+				<div class="m-portlet__head">
+					<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<h3 class="m-portlet__head-text">
+							Enter The Details:
+						</h3>
+					</div>
+					<div class="m-portlet__head-tools">
+						<ul class="m-portlet__nav">
+							<li class="m-portlet__nav-item">
+								<a href="#" data-toggle="m-tooltip" class="m-portlet__nav-link m-portlet__nav-link--icon" data-direction="left" data-width="auto" title="" data-original-title="Below will allow you to select pre-built forms for ticketing, or select 'Create Ticket' for a default ticket.">
+									<i class="fa fa-info"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				</div>
+
+
+
+
+					<form id="form-wizard-onboarding" method="post" name="form-wizard-onboarding m_form" id="" novalidate="novalidate">
+						{% csrf_token %}
+
+					</form>
+
+
+
+
+
+
+				<div class="m-portlet--body">
+								<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed" action="{% url 'createTicket' %}" method="POST">
+									{% csrf_token %}
+									<div class="m-portlet__body">
+										{% if Form.errors %}
+										<div class="form-group m-form__group row">
+										    {% for error in Form.errors %}
+												<strong>{{ error|escape }}</strong>
+											{% endfor %}
+										</div>
+										{% endif %}
+											<div class="form-group m-form__group row">
+
+												<div class="col-lg-6">
+													<label>Ticket Contact Name <span class="m--font-danger">*</span>:</label>
+													 <!-- <input type="input" class="form-control m-input" value="{{ userData.firstName }} {{ userData.lastName }}"> -->
+													<input type="text" class="form-control m-input" name="{{Form.contact.name}}" id="{{Form.contact.id_for_label}}" value="{{ userData.firstName }} {{ userData.lastName }}">
+													<span class="m-form__help"></span>
+												</div>
+												<div class="col-lg-6">
+													<label class="">Company Name <span class="m--font-danger">*</span>:</label>
+													<input type="input" class="form-control m-input" name="{{Form.company.name}}" id="{{Form.company.id_for_label}}" value="{{ companyData.0.name }}">							<input type="hidden" name="contactid" id="contactid" value="{{userData.id}}">
+													<input type="hidden" name="companyid" id="companyid" value="{{userData.company.id}}">
+													<span class="m-form__help"></span>
+												</div>
+
+												<div class="col-lg-3">
+													<label>Email Address <span class="m--font-danger">*</span>:</label>
+													<input type="email" class="form-control m-input" name="{{Form.email.name}}" id="{{Form.email.id_for_label}}" value="{% for item in userData.communicationItems %}
+														{% if item.communicationType == 'Email' %}
+														{{ item.value }}
+														{% endif %}
+														{%endfor%}
+													">
+													<span class="m-form__help"></span>
+												</div>
+												<div class="col-lg-3">
+													<label>Affected Computer:</label>
+														<select class="form-control m-input" name="{{Form.computers.name}}" id="{{Form.computers.id_for_label}}">
+															<option value="None">None</option>
+															{% for item in computerData %}
+															<option value="{{item.id}}">{{item.name}}</option>
+															{%endfor%}
+														</select>
+													<span class="m-form__help"></span>
+												</div>
+												<div class="col-lg-3">
+													<label class="">Contact Phone Number <span class="m--font-danger">*</span>:</label>
+													<input type="text" class="form-control m-input" name="{{Form.phone.name}}" id="{{Form.phone.id_for_label}}" value="
+														{% for item in userData.communicationItems %}
+														{% if item.communicationType == 'Phone' %}
+														{{ item.value }}
+														{% endif %}
+														{%endfor%}">
+													<span class="m-form__help"></span>
+
+												</div>
+												<div class="col-lg-3">
+													<label class="">Company Phone Number:</label>
+													<input type="text" class="form-control m-input" name="{{Form.companyphone.name}}" id="{{Form.companyphone.id_for_label}}" value="{{companyData.0.phoneNumber}}">
+													<span class="m-form__help"></span>
+												</div>
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-12">
+													<label>Ticket Title <span class="m--font-danger">*</span>:</label>
+													<div class="m-input-icon m-input-icon--right">
+														<input type="text" class="form-control m-input" name="{{Form.title.name}}" id="{{Form.title.id_for_label}}" placeholder="Enter a summary of your issue">
+														<span class="m-input-icon__icon m-input-icon__icon--right"><span></span></span>
+														<span class="m-form__help"></span>
+													</div>
+												</div>
+												<div class="col-lg-12">
+													<label class="">Ticket Details <span class="m--font-danger">*</span>:</label>
+													<div class="m-input-icon m-input-icon--right">
+														<textarea class="form-control m-input" id="details" placeholder="Please enter as much detail as possible about the issues you are encountering as well as any remediation steps you have attempted" name="details" rows="5"></textarea>
+														<span class="m-input-icon__icon m-input-icon__icon--right"><span><i class="fa fa-pencil-alt"></i></span></span>
+													</div>
+												</div>
+											</div>
+											<div class="form-group m-form__group row">
+
+
+								<div class="input-group">
+
+									<label class="custom-file-label">Add Files</label>
+									<div class="col-lg-10 has-warning">
+                                        {{ field.errors|safe }}
+										<div class="custom-file">
+                                            {{ Form.fileAdd }}
+                                          </div>
+									</div>
+								</div>
+
+
+
+												</div>
+
+										</div>
+										<div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+											<div class="m-form__actions m-form__actions--solid m-form--actions--center">
+												<div class="row">
+													<div class="col-5">
+													</div>
+													<div class="col-6">
+														<button type="submit" class="btn m-btn m-btn--wide btn-primary">Submit</button>
+														<button type="reset" class="btn m-btn m-btn--wide btn-accent">Cancel</button></form>
+
+													</div>
+												</div>
+											</div>
+										</div>
+				</form></div></div></div>
+
+				</div>
+		</div>
+			{% comment %}
+			<p>dump:{% for item in companyData %}
+			{{ item }}
+			{% endfor %}
+			</p>
+			<br><br>
+	{% endcomment %}
+
+	</div>
+
+		{% endblock %}
+
+

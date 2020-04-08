@@ -1,0 +1,282 @@
+{% extends "projectlayout.html" %}
+
+
+{% block main-content %}
+
+
+				<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+				<div class="m-content">
+					 {% if Success %}
+					<div class="m-alert m-alert--icon m-alert--air m-alert--square alert alert-dismissible m--margin-bottom-30" role="alert">
+					<div class="m-alert__icon">
+						<i class="fa fa-exclamation"></i>
+					</div>
+					<div class="m-alert__text">
+						 {{ Success|safe }}
+					</div>
+				</div>
+
+            {% endif %}
+
+			{% for perm in permissions %}
+			{% if  perm.identifier == 'ViewProjects' and perm.enabled == True %}
+				<div class="row">
+					<div class="col-lg-8">
+						<div class="m-portlet m-portlet--primary m-portlet--head-solid-bg m-portlet--rounded m-portlet--bordered">
+							<div class="m-portlet__head">
+								<div class="m-portlet__head-caption">
+									<div class="m-portlet__head-title">
+										<span class="m-portlet__head-icon">
+							<i class="fa fa-chalkboard-teacher"></i>
+						</span>
+								<h3 class="m-portlet__head-text">{{ Project.name }} (#{{ Project.id}}) <br><small> <i class="fa fa-sm fa-building"></i>  {{ Project.company.name }}</small></h3>
+									</div></div>
+
+							</div>
+							<div class="m-portlet__body">
+								<div class="row">
+									<div class="col-md-12 text-right"> <!--
+										<button class="btn btn-default">Send Update</button>
+										<button class="btn btn-default">Open Ticket</button>
+										<button class="btn btn-success">Continue</button>
+										<button class="btn btn-danger">Cancel</button>
+										-->
+									</div>
+								</div>
+
+								<div class="row m-t-20">
+									<div class="col-md-12">
+										<h4>Project description</h4>
+										{% if Project.description != '' %}
+										<p class="text-size-large">{{ Project.description }}</p>
+										{% elif Project.description == '' %}
+										<p class="text-size-large"><span class="label label-warning"> NO DESCRIPTION IN CONNECTWISE</span></p>
+										{% endif %}
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="m-portlet m-portlet--success m-portlet--head-solid-bg m-portlet--rounded m-portlet--bordered">
+							<div class="m-portlet__head">
+								<div class="m-portlet__head-caption">
+									<div class="m-portlet__head-title">
+																				<span class="m-portlet__head-icon">
+							<i class="fa fa-file-upload"></i>
+						</span>
+										<h4 class="m-portlet__head-text">Attached Files</h4>
+									</div>
+								</div>
+							</div>
+							<div class="m-portlet__body no-border-top">
+								<div class="m-widget4">
+								{% for d in Documents %}
+								{% if 'Ticket #' not in d.title and 'Ticket#' not in d.title%}
+
+									<div class="m-widget4__item">
+										<!--Icons-->
+										<div class="m-widget4__ext">
+										{% if '.xls' in d.fileName %}
+										<i class="fa fa-2x fa-file-excel"></i>
+										{% elif '.pdf' in d.fileName %}
+										<i class="fa fa-2x fa-file-pdf"></i>
+										{% elif '.png' in d.fileName %}
+										<i class="fa fa-2x fa-file-image"></i>
+										{% elif '.jpg' in d.fileName %}
+										<i class="fa fa-2x fa-file-image"></i>
+										{% elif '.doc' in d.fileName or '.DOCX' in d.filename %}
+										<i class="fa fa-2x fa-file-word"></i>
+										{% elif '.mp4' in d.fileName %}
+										<i class="fa fa-2x fa-file-video"></i>
+										{% elif '.msg' in d.fileName %}
+										<i class="fa fa-2x fa-envelope"></i>
+										{% elif '.mov' in d.fileName %}
+										<i class="icon-file-mov icon-2x m-t-5"></i>
+										{% else %}
+										<i class="icon-file icon-2x m-t-5"></i>
+										{% endif %}
+										</div>
+										<div class="m-widget4__info">
+											<span class="m-widget4__title">{{ d.title }} </span>
+											<span class="m-widget4__sub">{{ d.size|filesizeformat }}</span>
+										</div>
+										<div class="m-widget4__progress" style="width:175px; display: inline-block;">
+											{% if d.id %}
+											<button class="btn btn-success btn-sm"><i class="fa fa-sync position-left"></i>  Synced</button>
+											{% endif %}
+											{% if d.id == False %}
+											<button class="btn btn-warning btn-sm"><i class="icon-file-error position-left"></i>Not Synced</button>
+											{% endif %}
+											<a href="{% url 'download' d.id %}"><button class="btn btn-default btn-sm"><i class="fa fa-download"></i>Download</button></a>
+										</div>
+								</div>
+								{% endif %}
+								{% endfor %}
+								</div>
+								<hr>
+								<form enctype="multipart/form-data" method='POST' action="{% url  'projecttemp' Project.id  %}" class="m-t-20">
+                                    {% csrf_token %}
+                                <fieldset>
+                                {% for hidden_field in Form.hidden_fields %}
+                                    {{ hidden_field.errors }}
+                                    {{ hidden_field }}
+                                 {% endfor %}
+								<div class="input-group">
+                                    {% for field in Form.visible_fields %}
+									<label class="custom-file-label">Add Files</label>
+									<div class="col-lg-10 has-warning">
+                                        {{ field.errors|safe }}
+										<div class="custom-file">
+                                            {{ field }}
+                                          </div>
+									</div>
+                                    {% endfor %}
+								</div>
+                                <div class="form-wizard-actions">
+                                    <br>
+                                        <input type="submit" class="btn m-btn--pill btn-primary m-btn m-btn--custom m-btn--label-brand m-btn--bolder float-right">
+                                </div>
+									</fieldset>
+								</form>
+
+
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-4">
+						<div class="m-portlet m-portlet--primary m-portlet--head-solid-bg m-portlet--bordered">
+							<div class="m-portlet__head">
+								<div class="m-portlet__head-caption">
+									<div class="m-portlet__head-title">
+										<span class="m-portlet__head-icon">
+											<i class="fa fa-info"></i>
+										</span>
+										<h3 class="m-portlet__head-text">Project Details
+										</h3>
+									</div>
+								</div>
+								<h5 class="m-portlet__head-desc"></h5>
+							</div>
+							<div class="m-portlet__body">
+								<div class="row">
+									<div class="col-md-6">
+										<h5 class="no-margin">Total Hours:</h5>
+									</div>
+
+									<div class="col-md-6 text-right">
+										<h5 class="no-margin">{{ Project.actualHours }} Hours</h5>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<h5 class="no-margin m-t-5">Estimated Hours:</h5>
+									</div>
+
+									<div class="col-md-6 text-right">
+										<h5 class="no-margin m-t-5">{{ Project.estimatedHours }} hours</h5>
+									</div>
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-md-12 m-t-5">
+										<h6 class="no-margin m-b-10">Current status - <small><b>{{ Project.status.name|truncatechars:15 }}</b></small></h6>
+										<div class="progress m-t-5 m-b-10">
+											<div class="progress-bar progress-bar-success progress-bar-striped active" style="{% if '25' in Project.status.name %}
+											width: 25%;
+											{% elif '50' in Project.status.name %}
+											width: 50%;
+											{% elif '75' in Project.status.name %}
+											width: 75%;
+											{% else %}
+											width: 5%;
+
+
+{% endif %}">
+												<span class="sr-only">55% Complete (success)</span>
+											</div>
+										</div>
+									</div>
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-md-12">
+										<h6 class="no-margin m-b-10"><u>Team Members</u></h6>
+										<div class="row">
+											<div class="col-md-6 col-xs-6">
+												{% for title in Team %}
+													<h6>{{ title.projectRole.identifier }}</h6>
+												{% endfor %}
+											</div>
+											<div class="col-md-6 col-xs-6 text-right">
+												{% for title in Team %}
+													<h6>{{ title.member.name }}</h6>
+												{% endfor %}
+											</div>
+										</div>
+
+									</div>
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-md-12">
+										<h6 class="no-margin">Project details</h6>
+										<div class="row">
+											<div class="col-md-6 col-xs-6">
+												<h5>Company</h5>
+												<h5>Primary Contact</h5>
+												<h5>Project Manager</h5>
+											</div>
+
+											<div class="col-md-6 col-xs-6 text-right">
+												<h5>{{ Project.company.name }}</h5>
+												<h5>{{ Project.contact.name }}</h5>
+												<h5>{{ Project.manager.name }}</h5>
+											</div>
+										</div>
+									</div>
+								</div>
+								<hr>
+								<div class="row">
+									<div class="col-md-12">
+										<h6 class="no-margin m-b-10">Labels</h6>
+										<span class="label label-info">{{ Project.billingTerms.name }}</span>
+										<span class="label label-info"></span>
+										<span class="label label-info"></span>
+										<span class="label label-info"></span>
+									</div>
+								</div>
+								<hr>
+								<!--
+								<div class="row">
+									<div class="col-md-12">
+										<h6 class="no-margin m-b-10" style="">Options</h6>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" class="control-info" checked="checked">
+												Make this project a priority
+											</label>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" class="control-info" checked="checked">
+												Send project report by email
+											</label>
+										</div>
+										<div class="checkbox">
+											<label>
+												<input type="checkbox" class="control-info">
+												Send all notifications by email
+											</label>
+										</div>
+									</div>
+								</div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+				</div>
+				</div>
+				{% endif %}
+				{% endfor %}
+                {% endblock main-content %}

@@ -1,0 +1,2339 @@
+	{% extends "layout.html" %}
+	{% block title %} Open Projects Listing {% endblock %}
+	{% load static %}
+
+	{% block style %}
+	<link href="{% static 'base/css/vendors/select/bootstrap-select.css' %}" rel="stylesheet">
+	{% endblock %}
+
+	{% block pagejs %}
+
+	<script src="{% static 'base/js/jquery.validate.js' %}"></script>
+	<script src="{% static 'base/js/additional-methods.js' %}"></script>
+	<script src="{% static 'base/js/wizard.js' %}"></script>
+	<script src="{% static 'base/js/vendors/select/bootstrap-select.js' %}"></script>
+	<script src="{% static 'base/js/jquery.bootstrap.wizard.js' %}"></script>
+	{% endblock %}
+
+	{% block main-content %}
+	<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+		<!-- BEGIN: Subheader -->
+		<div class="m-subheader ">
+		<div class="d-flex align-items-center">
+			<div class="mr-auto">
+				<h3 class="m-subheader__title m-subheader__title--separator">Onboardings</h3>
+								<ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+						<li class="m-nav__item m-nav__item--home">
+							<a href="#" class="m-nav__link m-nav__link--icon">
+							   <i class="m-nav__link-icon fa fa-project-diagram"></i>
+							</a>
+						</li>
+												<li class="m-nav__separator">-</li>
+							<li class="m-nav__item">
+								<a href="" class="m-nav__link">
+									<span class="m-nav__link-text">All Onboardings</span>
+								</a>
+							</li>
+
+												<li class="m-nav__separator">-</li>
+							<li class="m-nav__item">
+								<a href="" class="m-nav__link">
+									<span class="m-nav__link-text">Open Onboardings</span>
+								</a>
+							</li>
+										</ul>
+						</div>
+		</div>
+		</div>
+	<!-- END: Subheader -->
+
+
+		<div class="m-content">
+
+			<div class="m-portlet m-portlet--full-height">
+				<!-- main card -->
+				<div class="m-portlet__head">
+					<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<h3 class="m-portlet__head-text">
+							Onboarding Wizard
+							<small>Currently X% Complete</small>
+						</h3>
+					</div>
+					<div class="m-portlet__head-tools">
+						<ul class="m-portlet__nav">
+							<li class="m-portlet__nav-item">
+								<a href="#" data-toggle="m-tooltip" class="m-portlet__nav-link m-portlet__nav-link--icon" data-direction="left" data-width="auto" title="" data-original-title="Get help with filling up this form">
+									<i class="fa fa-info"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				</div>
+
+
+
+
+					<form id="form-wizard-onboarding" method="post" name="form-wizard-onboarding m_form" id="" novalidate="novalidate">
+						{% csrf_token %}
+						<input type="hidden" name="onboardingid" value="{{ OnboardingID }}">
+					</form>
+
+
+
+
+
+
+				<div class="m-portlet--body">
+				<div class="m-wizard m-wizard--5 m-wizard--success m-wizard--step-first" id="m_wizard">
+
+				<!--begin: Message container -->
+		        <div class="m-portlet__padding-x">
+		            <!-- Here you can put a message or alert -->
+		        </div>
+		        <!--end: Message container -->
+
+				<!--begin: Form Wizard Head -->
+				<div class="m-wizard__head m-portlet__padding-x">
+					<div class="row">
+						<div class="col-xl-10 offset-xl-1">
+							<!--begin: Form Wizard Nav -->
+							<div class="m-wizard__nav">
+								<div class="m-wizard__steps">
+									<div class="m-wizard__step m-wizard__step--current" m-wizard-target="m_wizard_form_step_1">
+										<div class="m-wizard__step-info">
+											<a href="#" class="m-wizard__step-number">
+												<span class="m-wizard__step-seq">1.</span>
+												<span class="m-wizard__step-label">
+													Client Information
+												</span>
+												<span class="m-wizard__step-icon"><i class="fa fa-check"></i></span>
+											</a>
+										</div>
+									</div>
+
+									<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_2">
+										<div class="m-wizard__step-info">
+											<a href="#" class="m-wizard__step-number">
+												<span class="m-wizard__step-seq">2.</span>
+												<span class="m-wizard__step-label">
+													Networking Setup
+												</span>
+												<span class="m-wizard__step-icon"><i class="la la-check"></i></span>
+											</a>
+										</div>
+									</div>
+
+									<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_3">
+										<div class="m-wizard__step-info">
+											<a href="#" class="m-wizard__step-number">
+												<span class="m-wizard__step-seq">3.</span>
+												<span class="m-wizard__step-label">
+													Server Setup
+												</span>
+												<span class="m-wizard__step-icon"><i class="la la-check"></i></span>
+											</a>
+										</div>
+									</div>
+
+									<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_4">
+										<div class="m-wizard__step-info">
+											<a href="#" class="m-wizard__step-number">
+												<span class="m-wizard__step-seq">4.</span>
+												<span class="m-wizard__step-label">
+													User Hardware
+												</span>
+												<span class="m-wizard__step-icon"><i class="la la-check"></i></span>
+											</a>
+										</div>
+									</div>
+									<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_5">
+										<div class="m-wizard__step-info">
+											<a href="#" class="m-wizard__step-number">
+												<span class="m-wizard__step-seq">5.</span>
+												<span class="m-wizard__step-label">
+													Application Setup
+												</span>
+												<span class="m-wizard__step-icon"><i class="la la-check"></i></span>
+											</a>
+										</div>
+									</div>
+									<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_6">
+										<div class="m-wizard__step-info">
+											<a href="#" class="m-wizard__step-number">
+												<span class="m-wizard__step-seq">6.</span>
+												<span class="m-wizard__step-label">
+													Backups Setup
+												</span>
+												<span class="m-wizard__step-icon"><i class="la la-check"></i></span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--end: Form Wizard Nav -->
+						</div>
+					</div>
+				</div>
+				<!--end: Form Wizard Head -->
+
+				<!--begin: Form Wizard Form-->
+				<div class="m-wizard__form">
+					<!--
+						1) Use m-form--label-align-left class to alight the form input lables to the right
+						2) Use m-form--state class to highlight input control borders on form validation
+					-->
+					<form class="m-form m-form--label-align-left- m-form--state-" id="m_form" novalidate="novalidate">
+												{% csrf_token %}
+						<input type="hidden" name="onboardingid" value="{{ OnboardingID }}">
+						<!--begin: Form Body -->
+						<div class="m-portlet__body">
+
+							<!--begin: Form Wizard Step 1-->
+							<div class="m-wizard__form-step m-wizard__form-step--current" id="m_wizard_form_step_1">
+								<div class="row">
+									<div class="col-xl-10 offset-xl-1">
+										<div class="m-form__section m-form__section--first">
+											<div class="m-form__heading">
+												<h3 class="m-form__heading-title">Client Details</h3>
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-5 m-form__group-sub">
+												<label class="form-control-label">* Client Name:</label>
+
+												<input type="text" name="name" class="form-control m-input" placeholder="" value="{{ Company.identifier }}">
+												<span class="m-form__help">Client Name as it should be in ConnectWise</span>
+												</div>
+
+												<div class="col-lg-5 m-form__group-sub">
+												<label class="form-control-label">* Primary Contact:</label>
+
+													<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" id='pc' data-live-search="true" data-tooltip-content="The current primary contact">
+															<optgroup label="Primary Contact">
+																{% if SetContact != '' %}
+																	{% for item in SetContact %}
+																		{% if item.contact_type is 1 %}
+																			<option value="{{item.contact_id}}" name="{{item.contact_firstname}} {{item.contact_lastname}}">
+																				{{item.contact_firstname}} {{item.contact_lastname}}
+																			</option>
+																		{%endif%}
+																	{%endfor%}
+																{% else %}
+																<option value="{{Company.defaultContact.id}}">
+																	{{Company.defaultContact.name}}
+																</option>
+																{% endif %}
+															</optgroup>
+															<optgroup label="Other Contacts">
+																{% for user in Contacts %}
+																<option value="{{user.id}}" name="{{user.firstName}} {{user.lastName}}">
+																	{{user.firstName}} {{user.lastName}}
+																</option>
+																{% endfor %}
+															</optgroup>
+													</select>
+												<span class="m-form__help"></span>
+												</div>
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-3 m-form__group-sub">
+												<label class="form-control-label">* Address:</label>
+
+												<input type="text" name="address" class="form-control m-input" id="address" placeholder="" value="{{ Company.addressLine1 }}">
+												<span class="m-form__help">Company address represented in ConnectWise.</span>
+												</div>
+												<div class="col-lg-2 m-form__group-sub">
+												<label class="form-control-label">* City:</label>
+
+												<input type="text" name="address" class="form-control m-input" placeholder="" id="city" value="{{ Company.city }}">
+
+												</div>
+												<div class="col-lg-1 m-form__group-sub">
+												<label class="form-control-label">* State:</label>
+
+												<input type="text" name="address" class="form-control m-input" placeholder="" id='state' value="{{ Company.state }}">
+
+												</div>
+
+												<div class="col-lg-4 m-form__group-sub">
+												<label class="form-control-label">* Phone Number:</label>
+
+												<input type="text" name="phoneNumber" class="form-control m-input" id="tel" placeholder="" value="{{ Company.phoneNumber }}">
+
+												</div>
+											</div>
+
+
+							            <div class="m-separator m-separator--dashed m-separator--lg"></div>
+
+							            <div class="m-form__section">
+							            	<div class="m-form__heading">
+												<h3 class="m-form__heading-title">
+													Specific Contact Instances
+													<i data-toggle="m-tooltip" data-width="auto" class="m-form__heading-help-icon fa fa-user-alt" title="" data-original-title="Some help text goes here"></i>
+												</h3>
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-5 m-form__group-sub">
+												<label class="form-control-label">IT Support Contact</label>
+													<select id='is' class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-live-search="true" id='itsupport' tabindex="-1">
+															<optgroup label="Selected Contact">
+																{% if SetContact != '' %}
+																	{% for item in SetContact %}
+																		{% if item.contact_type is 2 %}
+																			<option value="{{item.contact_id}}" name="{{item.contact_firstname}} {{item.contact_lastname}}">
+																				{{item.contact_firstname}} {{item.contact_lastname}}
+																			</option>
+																		{%endif%}
+																	{%endfor%}
+																{% else %}
+																<option value="{{Company.defaultContact.id}}">
+																	{{Company.defaultContact.name}}
+																</option>
+																{% endif %}
+															</optgroup>
+															<optgroup label="Other Contacts">
+																{% for user in Contacts %}
+																<option value="{{user.id}}" name="{{user.firstName}} {{user.lastName}}">
+																	{{user.firstName}} {{user.lastName}}
+																</option>
+																{% endfor %}
+															</optgroup>
+														</select>
+
+												<span class="m-form__help"></span>
+												</div>
+
+												<div class="col-lg-5 m-form__group-sub">
+<label class="form-control-label">IT Planning and Project Contact</label>
+														<select id='it' class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-live-search="true"tabindex="-1">
+															<optgroup label="Primary Contact">
+																{% if SetContact != '' %}
+																	{% for item in SetContact %}
+																		{% if item.contact_type is 3 %}
+																			<option value="{{item.contact_id}}" name="{{item.contact_firstname}} {{item.contact_lastname}}">
+																				{{item.contact_firstname}} {{item.contact_lastname}}
+																			</option>
+																		{%endif%}
+																	{%endfor%}
+																{% else %}
+																<option value="{{Company.defaultContact.id}}">
+																	{{Company.defaultContact.name}}
+																</option>
+																{% endif %}
+															</optgroup>
+															<optgroup label="Other Contacts">
+																{% for user in Contacts %}
+																<option value="{{user.id}}" name="{{user.firstName}} {{user.lastName}}">
+																	{{user.firstName}} {{user.lastName}}
+																</option>
+																{% endfor %}
+															</optgroup>
+														</select>
+												</div>
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-5 m-form__group-sub">
+												<label class="form-control-label">Accounts Payable</label>
+													<select id="ap" class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-live-search="true" tabindex="-1">
+															<optgroup label="Primary Contact">
+																{% if SetContact != '' %}
+																	{% for item in SetContact %}
+																		{% if item.contact_type is 5 %}
+																			<option value="{{item.contact_id}}" name="{{item.contact_firstname}} {{item.contact_lastname}}">
+																				{{item.contact_firstname}} {{item.contact_lastname}}
+																			</option>
+																		{%endif%}
+																	{%endfor%}
+																{% else %}
+																<option value="{{Company.defaultContact.id}}">
+																	{{Company.defaultContact.name}}
+																</option>
+																{% endif %}
+															</optgroup>
+															<optgroup label="Other Contacts">
+																{% for user in Contacts %}
+																<option value="{{user.id}}" name="{{user.firstName}} {{user.lastName}}">
+																	{{user.firstName}} {{user.lastName}}
+																</option>
+																{% endfor %}
+															</optgroup>
+														</select>
+
+												<span class="m-form__help"></span>
+												</div>
+
+												<div class="col-lg-5 m-form__group-sub">
+														<label class="form-control-label">Emergency Building Access Contact</label>
+													<select id="em" class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-live-search="true" tabindex="-1">
+															<optgroup label="Primary Contact">
+																{% if SetContact != '' %}
+																	{% for item in SetContact %}
+																		{% if item.contact_type is 6 %}
+																			<option value="{{item.contact_id}}" name="{{item.contact_firstname}} {{item.contact_lastname}}">
+																				{{item.contact_firstname}} {{item.contact_lastname}}
+																			</option>
+																		{%endif%}
+																	{%endfor%}
+																{% else %}
+																<option value="{{Company.defaultContact.id}}">
+																	{{Company.defaultContact.name}}
+																</option>
+																{% endif %}
+															</optgroup>
+															<optgroup label="Other Contacts">
+																{% for user in Contacts %}
+																<option value="{{user.id}}" name="{{user.firstName}} {{user.lastName}}">
+																	{{user.firstName}} {{user.lastName}}
+																</option>
+																{% endfor %}
+															</optgroup>
+														</select>
+												</div>
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-5 m-form__group-sub">
+												<label class="form-control-label">Accounts Payable</label>
+													<label class="form-control-label">Compliance Officer</label>
+													<select id="co" class="form-control m-input m-bootstrap-select m_selectpicker"  name="fwb" data-live-search="true"tabindex="-1">
+															<optgroup label="Primary Contact">
+																{% if SetContact != '' %}
+																	{% for item in SetContact %}
+																		{% if item.contact_type is 7 %}
+																			<option value="{{item.contact_id}}" name="{{item.contact_firstname}} {{item.contact_lastname}}">
+																				{{item.contact_firstname}} {{item.contact_lastname}}
+																			</option>
+																		{%endif%}
+																	{%endfor%}
+																{% else %}
+																<option value="{{Company.defaultContact.id}}">
+																	{{Company.defaultContact.name}}
+																</option>
+																{% endif %}
+															</optgroup>
+															<optgroup label="Other Contacts">
+																{% for user in Contacts %}
+																<option value="{{user.id}}" name="{{user.firstName}} {{user.lastName}}">
+																	{{user.firstName}} {{user.lastName}}
+																</option>
+																{% endfor %}
+															</optgroup>
+														</select>
+
+												<span class="m-form__help"></span>
+												</div>
+
+												<div class="col-lg-5 m-form__group-sub">
+														<label class="form-control-label">Vendor Management Contact</label>
+													<select id="vm" class="form-control m-input m-bootstrap-select m_selectpicker"  name="fwb" data-live-search="true" tabindex="-1">
+															<optgroup label="Primary Contact">
+																{% if SetContact != '' %}
+																	{% for item in SetContact %}
+																		{% if item.contact_type is 4 %}
+																			<option value="{{item.contact_id}}" name="{{item.contact_firstname}} {{item.contact_lastname}}">
+																				{{item.contact_firstname}} {{item.contact_lastname}}
+																			</option>
+																		{%endif%}
+																	{%endfor%}
+																{% else %}
+																<option value="{{Company.defaultContact.id}}">
+																	{{Company.defaultContact.name}}
+																</option>
+																{% endif %}
+															</optgroup>
+															<optgroup label="Other Contacts">
+																{% for user in Contacts %}
+																<option value="{{user.id}}" name="{{user.firstName}} {{user.lastName}}">
+																	{{user.firstName}} {{user.lastName}}
+																</option>
+																{% endfor %}
+															</optgroup>
+														</select>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							</div>
+							<!--end: Form Wizard Step 1-->
+
+							<!--begin: Form Wizard Step 2-->
+							<div class="m-wizard__form-step" id="m_wizard_form_step_2">
+								<div class="row">
+									<div class="col-xl-10 offset-xl-1">
+										<div class="m-form__section m-form__section--first">
+											<div class="m-form__heading">
+												<h3 class="m-form__heading-title">Network Infrastructure Details</h3>
+											</div>
+
+											<div class="form-group m-form__group row">
+												<div class="col-lg-6 m-form__group-sub">
+													<label class="form-control-label">* IP Scheme:</label>
+													<input type="url" name="asd" id='localip' class="form-control m-input" placeholder="" value="192.168.1.1/32">
+													<span class="m-form__help">The Current IP Scheme for the company internal network.</span>
+												</div>
+												<div class="col-lg-6 m-form__group-sub">
+													<label class="form-control-label">* External IP:</label>
+													<input type="url" name="asd" id="extip" class="form-control m-input" placeholder="" value="169.169.25.253">
+													<span class="m-form__help">The External IP of the client.</span>
+												</div>
+											</div>
+
+											<div class="form-group m-form__group row">
+												<div class="col-lg-6 m-form__group-sub">
+													<label class="form-control-label">* ISP:</label>
+													<select class="form-control m-input m-bootstrap-select m_selectpicker"  name="fwb" id="isp" >
+														<option value="charterspectrum">Charter/Time Warner/Spectrum</option>
+														<option value="cox">Cox</option>
+														<option value="comcast">Comcast</option>
+														<option value="frontier">Frontier Networks</option>
+														<option value="reseller">Third Party Reseller</option>
+														<option value="other">Other/Not-Listed</option>
+													</select>
+
+												</div>
+												<div class="col-lg-6 m-form__group-sub">
+													<label class="form-control-label">* Speed Estimate:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-placeholder="In Mb" id="speed">
+														<option value="1">
+															&lt; 1Mbps
+														</option>
+														<option value="10">
+															1 - 10 Mbps
+														</option>
+														<option value="100">
+															10 - 100 Mbps
+														</option>
+														<option value="1000">
+															100 - 1000 Mbps
+														</option>
+														<option value="1000+">
+															&gt; 1Gbps
+														</option>
+													</select>
+
+												</div>
+											</div>
+							            </div>
+
+							            <div class="m-separator m-separator--dashed m-separator--lg"></div>
+
+							            <div class="m-form__section">
+											<div class="m-form__heading">
+												<h3 class="m-form__heading-title">Infrastructure Setup</h3>
+											</div>
+
+											<div class="form-group m-form__group row" id="fieldFW">
+
+													<div class="col-lg-4 m-form__group-sub">
+														<label class="form-control-label">* Firewall Brand:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-placeholder="Brand" id="fwbrand_0">
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+														</select>
+													</div>
+													<div class="col-lg-4 m-form__group-sub">
+														<label class="form-control-label">* Firewall Model:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb"  data-placeholder="Brand" id="fwmodel_0">
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+														</select>
+													</div>
+													<div class="col-lg-2 m-form__group-sub">
+														<label class="form-control-label">* Firewall Replace:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-placeholder="Brand" id="fwreplace_0">
+															<option value="y">Yes</option>
+															<option value="n">No</option>
+															<option value="soon">Soon</option>
+														</select>
+
+													</div>
+													<div class="col-lg-2 m-form__group-sub">
+														<label class="form-control-label">Add More:</label>
+														<button class="form-control btn btn-dark m-btn m-btn--custom m-btn--icon" name="fwb" onclick="addAdditionFields('fieldFW')"><i class="fa fa-plus-square"></i></button>
+
+													</div>
+
+
+
+											</div>
+											<div id="writeFW"></div>
+											<div class="m-separator m-separator--brand m-separator--sm"></div>
+											<div class="form-group m-form__group row" id="fieldSW">
+
+													<div class="col-lg-4 m-form__group-sub">
+														<label class="form-control-label">* Switch Brand:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-placeholder="Brand" id="swbrand_0">
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+														</select>
+													</div>
+													<div class="col-lg-4 m-form__group-sub">
+														<label class="form-control-label">* Switch Model:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-placeholder="Brand" id="swmodel_0">
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+														</select>
+													</div>
+													<div class="col-lg-2 m-form__group-sub">
+														<label class="form-control-label">* Switch Replace:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-placeholder="Brand" id="swreplace_0">
+															<option value="y">Yes</option>
+															<option value="n">No</option>
+															<option value="soon">Soon</option>
+														</select>
+
+													</div>
+													<div class="col-lg-2 m-form__group-sub">
+														<label class="form-control-label">Add More:</label>
+														<button class="form-control btn btn-dark m-btn m-btn--custom m-btn--icon" onclick="addAdditionFields('fieldSW')"><i class="fa fa-plus-square"></i></button>
+
+													</div>
+
+
+
+											</div>
+											<div id="writeSW"></div>
+											<div class="m-separator m-separator--brand m-separator--sm"></div>
+											<div class="form-group m-form__group row" id="fieldAP">
+
+													<div class="col-lg-4 m-form__group-sub">
+														<label class="form-control-label">* WAP Brand:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-placeholder="Brand" id="apbrand_0">
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+														</select>
+													</div>
+													<div class="col-lg-4 m-form__group-sub">
+														<label class="form-control-label">* WAP Model:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-placeholder="Brand" id="apmodel_0">
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+															<option value="cisco">Cisco</option>
+														</select>
+													</div>
+													<div class="col-lg-2 m-form__group-sub">
+														<label class="form-control-label">* WAP Replace:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker"  name="fwb" data-placeholder="Brand" id="apreplace_0">
+															<option value="y">Yes</option>
+															<option value="n">No</option>
+															<option value="soon">Soon</option>
+														</select>
+
+													</div>
+													<div class="col-lg-2 m-form__group-sub">
+														<label class="form-control-label">Add More:</label>
+														<button class="form-control btn btn-dark m-btn m-btn--custom m-btn--icon" onclick="addAdditionFields('fieldAP')"><i class="fa fa-plus-square"></i></button>
+
+													</div>
+
+
+
+											</div>
+											<div id="writeAP"></div>
+							            </div>
+									</div>
+								</div>
+							</div>
+							<!--end: Form Wizard Step 2-->
+
+							<!--begin: Form Wizard Step 3-->
+							<div class="m-wizard__form-step" id="m_wizard_form_step_3">
+								<div class="row">
+									<div class="col-xl-10 offset-xl-1">
+										<div class="m-form__section m-form__section--first">
+											<div class="m-form__heading">
+												<h3 class="m-form__heading-title">Client Server Infrastructure</h3>
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-12">
+													<label class="form-control-label">* Server Data:</label>
+													<input type="text" name="notesfield" class="form-control m-input" placeholder="" value="Information pertaining to ">
+												</div>
+											</div>
+
+											<div class="form-group m-form__group row">
+												<div class="col-lg-4 m-form__group-sub">
+													<label class="form-control-label">* Server Data:</label>
+													<select class="form-control m-input" name="billing_card_exp_month">
+														<option value="">Select</option>
+														<option value="01">01</option>
+													</select>
+												</div>
+												<div class="col-lg-4 m-form__group-sub">
+													<label class="form-control-label">* Server Data:</label>
+													<select class="form-control m-input" name="billing_card_exp_year">
+														<option value="">Select</option>
+														<option value="2018">2018</option>
+													</select>
+												</div>
+												<div class="col-lg-4 m-form__group-sub">
+													<label class="form-control-label">* Server Data:</label>
+													<input type="number" class="form-control m-input" name="billing_card_cvv" placeholder="" value="450">
+												</div>
+											</div>
+							            </div>
+
+							            <div class="m-separator m-separator--dashed m-separator--lg"></div>
+
+							            							            <div class="m-form__section">
+											<div class="m-form__heading">
+												<h3 class="m-form__heading-title">Infrastructure Setup</h3>
+											</div>
+
+											<div class="form-group m-form__group row" id="fieldSRV">
+
+													<div class="col-lg-4 m-form__group-sub">
+														<label class="form-control-label">* Server Hardware:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-placeholder="Brand" id="fwbrand_0">
+															<option value="dell">Dell</option>
+															<option value="hp">HP</option>
+															<option value="lenovo">Lenovo</option>
+															<option value="other">Other/Whitebox</option>
+														</select>
+													</div>
+													<div class="col-lg-4 m-form__group-sub">
+														<label class="form-control-label">* Firewall Model:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb"  data-placeholder="Brand" id="fwmodel_0">
+															<option value="WRT54G">WRT54G</option>
+														</select>
+													</div>
+													<div class="col-lg-2 m-form__group-sub">
+														<label class="form-control-label">* Replace:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-placeholder="Brand" id="fwreplace_0">
+															<option value="y">Yes</option>
+															<option value="n">No</option>
+															<option value="soon">Soon</option>
+														</select>
+
+													</div>
+													<div class="col-lg-2 m-form__group-sub">
+														<label class="form-control-label">Add More:</label>
+														<button class="form-control btn btn-dark m-btn m-btn--custom m-btn--icon" name="fwb" onclick="addAdditionFields('fieldFW')"><i class="fa fa-plus-square"></i></button>
+
+													</div>
+
+
+
+											</div>
+											<div id="writeSR"></div>
+											<div class="m-separator m-separator--dashed m-separator--lg"></div>
+
+							            							            <div class="m-form__section">
+											<div class="m-form__heading">
+												<h3 class="m-form__heading-title">Server Infrastructure</h3>
+											</div>
+
+											<div class="form-group m-form__group row" id="fieldSRV">
+
+													<div class="col-lg-4 m-form__group-sub">
+														<label class="form-control-label">* Server OS:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-placeholder="Brand" id="fwbrand_0">
+															<option value="dell">Server 2016</option>
+															<option value="hp">Server 2012/R2</option>
+															<option value="lenovo">Server 2008/R2</option>
+															<option value="other">Linux/Unix</option>
+														</select>
+													</div>
+													<div class="col-lg-4 m-form__group-sub">
+														<label class="form-control-label">* Server Type:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb"  data-placeholder="Brand" id="fwmodel_0">
+															<option value="WRT54G">DCHP/DNS</option>
+															<option value="dc">Domain Controller</option>
+														</select>
+													</div>
+													<div class="col-lg-2 m-form__group-sub">
+														<label class="form-control-label">* Replace:</label>
+														<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-placeholder="Brand" id="fwreplace_0">
+															<option value="y">Yes</option>
+															<option value="n">No</option>
+															<option value="soon">Soon</option>
+														</select>
+
+													</div>
+													<div class="col-lg-2 m-form__group-sub">
+														<label class="form-control-label">Add More:</label>
+														<button class="form-control btn btn-dark m-btn m-btn--custom m-btn--icon" name="fwb" onclick="addAdditionFields('fieldFW')"><i class="fa fa-plus-square"></i></button>
+
+													</div>
+
+
+
+											</div>
+																				</div>
+										<div class="m-separator m-separator--dashed m-separator--lg"></div>
+		                                <div class="m-form__section">
+		                                    <div class="m-form__heading">
+		                                        <h3 class="m-form__heading-title">Backups Overview</h3>
+		                                    </div>
+		                                    <div class="form-group m-form__group">
+		                                        <div class="row">
+		                                            <div class="col-lg-6">
+		                                                <label class="m-option">
+		                                                <span class="m-option__control">
+		                                                <span class="m-radio m-radio--state-brand">
+		                                                <input type="radio" name="backup_check" value="">
+		                                                <span></span>
+		                                                </span>
+		                                                </span>
+		                                                <span class="m-option__label">
+		                                                <span class="m-option__head">
+		                                                <span class="m-option__title">
+		                                                Backups Checked and Deemed Adequte
+		                                                </span>
+		                                                <span class="m-option__focus">
+
+		                                                </span>
+		                                                </span>
+		                                                <span class="m-option__body">
+		                                                All current backups have been checked and although may not be ideal could be used if an issue arose.
+		                                                </span>
+		                                                </span>
+		                                                </label>
+		                                            </div>
+		                                            <div class="col-lg-6">
+		                                                <label class="m-option">
+		                                                <span class="m-option__control">
+		                                                <span class="m-radio m-radio--state-brand">
+		                                                <input type="radio" name="backup_check" value="">
+		                                                <span></span>
+		                                                </span>
+		                                                </span>
+		                                                <span class="m-option__label">
+		                                                <span class="m-option__head">
+		                                                <span class="m-option__title">
+		                                                Backups Checked and Are Not Adequte
+		                                                </span>
+		                                                <span class="m-option__focus">
+
+		                                                </span>
+		                                                </span>
+		                                                <span class="m-option__body">
+		                                                All current backups have been checked and are in need of immediate replacement
+		                                                </span>
+		                                                </span>
+		                                                </label>
+		                                            </div>
+		                                        </div>
+		                                        <div class="m-form__help">
+		                                            <!--must use this helper element to display error message for the options-->
+		                                        </div>
+		                                    </div>
+		                                </div>
+
+
+									</div>
+								</div>
+							</div>
+							<!--end: Form Wizard Step 3-->
+							</div>
+							<!--begin: Form Wizard Step 4-->
+
+
+							<div class="m-wizard__form-step" id="m_wizard_form_step_4">
+								<div class="row">
+									<div class="col-xl-10 offset-xl-1">
+										<!--begin::Section-->
+										<div class="m-accordion m-accordion--default" id="m_accordion_1" role="tablist">
+											<!--begin::Item-->
+											<div class="m-accordion__item active">
+												<div class="m-accordion__item-head" role="tab" id="m_accordion_1_item_1_head" data-toggle="collapse" href="#m_accordion_1_item_1_body" aria-expanded="  false">
+													<span class="m-accordion__item-icon"><i class="fa fa-desktop"></i></span>
+													<span class="m-accordion__item-title">1. Desktop Hardware</span>
+													<span class="m-accordion__item-mode"></span>
+												</div>
+												<div class="m-accordion__item-body collapse show" id="m_accordion_1_item_1_body" role="tabpanel" aria-labelledby="m_accordion_1_item_1_head" data-parent="#m_accordion_1">
+													<!--begin::Content-->
+													<div class="tab-content  m--padding-30">
+														<div class="m-form__section m-form__section--first">
+															<div class="m-form__heading">
+																<h4 class="m-form__heading-title">Desktops</h4>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">Machine Type:</label>
+																<div class="col-xl-8 col-lg-8">
+																<select class="form-control m-input m-bootstrap-select m_selectpicker" name="fwb" data-placeholder="Brand" id="uh_brand0">
+																	<option value="y">Dell</option>
+																	<option value="n">HP</option>
+																	<option value="soon">Lenovo</option>
+																	<option value="soon">Toshiba</option>
+																	<option value="soon">Panasonic</option>
+																</select>
+																</div>
+															</div>
+															<br>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">Machine Count:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<input type="number" class="form-control m-input" name="" placeholder="" value="450">
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">Example Service Tag/SN:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<input type="text" class="form-control m-input" name="" placeholder="" value="450">
+																</div>
+															</div>
+															<div>
+																<button>ADD BUTTON HEREPLZ</button>
+															</div>
+														</div>
+														<div class="m-separator m-separator--dashed m-separator--lg"></div>
+														<div class="m-form__section">
+															<div class="m-form__heading">
+																<h4 class="m-form__heading-title">Application Specific Machines?</h4>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">here:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static"></span>
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">here:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static"></span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!--end::Content-->
+												</div>
+											</div>
+											<!--end::Item-->
+											<!--begin::Item-->
+											<div class="m-accordion__item">
+												<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_1_item_2_head" data-toggle="collapse" href="#m_accordion_1_item_2_body" aria-expanded="    false">
+													<span class="m-accordion__item-icon"><i class="fa  flaticon-placeholder"></i></span>
+													<span class="m-accordion__item-title">2. Printer Setup</span>
+													<span class="m-accordion__item-mode"></span>
+												</div>
+												<div class="m-accordion__item-body collapse" id="m_accordion_1_item_2_body" role="tabpanel" aria-labelledby="m_accordion_1_item_2_head" data-parent="#m_accordion_1">
+													<!--begin::Content-->
+													<div class="tab-content  m--padding-30">
+														<div class="m-form__section m-form__section--first">
+															<div class="m-form__heading">
+																<h4 class="m-form__heading-title">Account Details</h4>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">URL:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">sinortech.vertoffice.com</span>
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">Username:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">sinortech.admin</span>
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">Password:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">*********</span>
+																</div>
+															</div>
+														</div>
+														<div class="m-separator m-separator--dashed m-separator--lg"></div>
+														<div class="m-form__section">
+															<div class="m-form__heading">
+																<h4 class="m-form__heading-title">Client Settings</h4>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">User Group:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">Customer</span>
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">Communications:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">Phone, Email</span>
+																</div>
+															</div>
+														</div>
+													</div>
+													<!--end::Content-->
+												</div>
+											</div>
+											<!--end::Item-->
+											<!--begin::Item-->
+											<div class="m-accordion__item">
+												<div class="m-accordion__item-head collapsed" role="tab" id="m_accordion_1_item_3_head" data-toggle="collapse" href="#m_accordion_1_item_3_body" aria-expanded="    false">
+													<span class="m-accordion__item-icon"><i class="fa  flaticon-alert-2"></i></span>
+													<span class="m-accordion__item-title">3. Billing Setup</span>
+													<span class="m-accordion__item-mode"></span>
+												</div>
+												<div class="m-accordion__item-body collapse" id="m_accordion_1_item_3_body" role="tabpanel" aria-labelledby="m_accordion_1_item_3_head" data-parent="#m_accordion_1">
+													<div class="tab-content  m--padding-30">
+														<div class="m-form__section m-form__section--first">
+															<div class="m-form__heading">
+																<h4 class="m-form__heading-title">Billing Information</h4>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">Cardholder Name:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">Nick Stone</span>
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">Card Number:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">*************4589</span>
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">Exp Month:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">10</span>
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">Exp Year:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">2018</span>
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">CVV:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">***</span>
+																</div>
+															</div>
+														</div>
+														<div class="m-separator m-separator--dashed m-separator--lg"></div>
+														<div class="m-form__section">
+															<div class="m-form__heading">
+																<h4 class="m-form__heading-title">Billing Address</h4>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">Address Line 1:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">Headquarters 1120 N Street Sacramento 916-654-5266</span>
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">Address Line 2:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">P.O. Box 942873 Sacramento, CA 94273-0001</span>
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">City:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">Polo Alto</span>
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">State:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">California</span>
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">ZIP:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">37505</span>
+																</div>
+															</div>
+															<div class="form-group m-form__group m-form__group--sm row">
+																<label class="col-xl-4 col-lg-4 col-form-label">Country:</label>
+																<div class="col-xl-8 col-lg-8">
+																	<span class="m-form__control-static">USA</span>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<!--end::Item-->
+										</div>
+										<!--end::Section-->
+										<div class="m-separator m-separator--dashed m-separator--lg"></div>
+										<div class="form-group m-form__group m-form__group--sm row">
+											<div class="col-xl-12">
+												<div class="m-checkbox-inline">
+													<label class="m-checkbox m-checkbox--solid m-checkbox--brand">
+													<input type="checkbox" name="accept" value="1">
+													Click here to indicate that you have read and agree to the terms presented in the Terms and Conditions agreement
+													<span></span>
+													</label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--end: Form Wizard Step 4-->
+
+						</div>
+						<!--end: Form Body -->
+
+
+						<!--begin: Form Actions -->
+						<div class="m-portlet__foot m-portlet__foot--fit m--margin-top-40">
+							<div class="m-form__actions m-form__actions">
+								<div class="row">
+									<div class="col-lg-1"></div>
+									<div class="col-lg-4 m--align-left">
+
+										<a href="#" class="btn btn-dark m-btn m-btn--custom m-btn--icon" data-wizard-action="prev">
+											<span>
+												<i class="fa fa-arrow-left"></i>&nbsp;&nbsp;
+												<span>Back</span>
+											</span>
+										</a>
+
+									</div>
+									<div class="col-lg-6 m--align-right">
+
+										<a href="#" class="btn btn-primary m-btn m-btn--custom m-btn--icon" data-wizard-action="submit">
+											<span>
+												<i class="fa fa-check"></i>&nbsp;&nbsp;
+												<span>Submit</span>
+											</span>
+										</a>
+
+										<a href="#" class="btn btn-warning m-btn m-btn--custom m-btn--icon" data-wizard-action="next">
+											<span>
+												<span>Save &amp; Continue</span>&nbsp;&nbsp;
+												<i class="fa fa-arrow-right"></i>
+											</span>
+										</a>
+
+									</div>
+									<div class="col-lg-1"></div>
+								</div>
+							</div>
+						</div>
+						<!--end: Form Actions -->
+					</form>
+				</div>
+				<!--end: Form Wizard Form-->
+			</div>
+
+
+					{% comment "old code %}
+					<div class="m-wizard m-wizard--5 m-wizard--success m-wizard--step-first">
+						<div class="row">
+							<div class="col-xl-12 offset-xl-1">
+							<!--begin: Form Wizard Nav -->
+							<div class="m-wizard__nav">
+								<div class="m-wizard__steps">
+									<div class="m-wizard__step m-wizard__step--current" m-wizard-target="m_wizard_form_step_1">
+										<div class="m-wizard__step-info">
+											<a href="#" class="m-wizard__step-number">
+												<span class="m-wizard__step-seq">1.</span>
+												<span class="m-wizard__step-label">
+													Client Information
+												</span>
+												<span class="m-wizard__step-icon"><i class="la la-check"></i></span>
+											</a>
+										</div>
+									</div>
+
+									<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_2">
+										<div class="m-wizard__step-info">
+											<a href="#" class="m-wizard__step-number">
+												<span class="m-wizard__step-seq">2.</span>
+												<span class="m-wizard__step-label">
+													Account Setup
+												</span>
+												<span class="m-wizard__step-icon"><i class="la la-check"></i></span>
+											</a>
+										</div>
+									</div>
+
+									<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_3">
+										<div class="m-wizard__step-info">
+											<a href="#" class="m-wizard__step-number">
+												<span class="m-wizard__step-seq">3.</span>
+												<span class="m-wizard__step-label">
+													Billing Setup
+												</span>
+												<span class="m-wizard__step-icon"><i class="la la-check"></i></span>
+											</a>
+										</div>
+									</div>
+
+									<div class="m-wizard__step" m-wizard-target="m_wizard_form_step_4">
+										<div class="m-wizard__step-info">
+											<a href="#" class="m-wizard__step-number">
+												<span class="m-wizard__step-seq">4.</span>
+												<span class="m-wizard__step-label">
+													Confirmation
+												</span>
+												<span class="m-wizard__step-icon"><i class="la la-check"></i></span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--end: Form Wizard Nav -->
+
+
+
+
+							<div class="m-wizard__form">
+								<!-- Floorplan if possible -->
+								<div class="m-wizard__form-step m-wizard__form-step--current" id="m_wizard_form_step_1">
+									<div class="row">
+										<div class="m-form__section m-form__section--first">
+										<fieldset class="step" id="1">
+												<div class="m-form__heading">
+													<h3 class="m-form__heading-title">Client Details</h3>
+												</div>
+
+												<div class="form-group m-form__group row">
+													<div class="col-lg-6 m-form__group-sub">
+														<label class="col-xl-3 col-lg-3 col-form-label">Client Name:</label>
+													<input class="form-control m-input" name="name" type="text" value="{{ Company.identifier }}">
+														<span class="m-form__help">Testing</span>
+													</div>
+
+
+													<div class="col-lg-6 m-form__group-sub">
+														<label>Physical Address:</label>: <input class="form-control" name="address" type="text" value="{{ Company.addressLine1 }} {{Company.addressLine2}}, {{Company.city}}, {{Company.state}}">
+													</div>
+
+												</div>
+
+											<div class="row">
+												<div class="col-md-6 col-sm-6">
+													<div class="form-group">
+														<label>Phone #:</label> <input class="form-control" data-mask="+99-123-456-7890" name="tel" type="text" value="{{Company.phoneNumber}}">
+													</div>
+												</div>
+												<div class="col-md-6 col-sm-6">
+													<div class="form-group">
+														<label>Primary Contact</label> <select size="1" id="pc" class="form-control bootstrap-select selectpicker" data-live-search="true"  tabindex="-1">
+															<optgroup label="Primary Contact">
+																{% if SetContact != '' %}
+																	{% for item in SetContact %}
+																		{% if item.contact_type is 1 %}
+																			<option value="{{item.contact_id}}" name="{{item.contact_firstname}} {{item.contact_lastname}}">
+																				{{item.contact_firstname}} {{item.contact_lastname}}
+																			</option>
+																		{%endif%}
+																	{%endfor%}
+																{% else %}
+																<option value="{{Company.defaultContact.id}}">
+																	{{Company.defaultContact.name}}
+																</option>
+																{% endif %}
+															</optgroup>
+															<optgroup label="Other Contacts">
+																{% for user in Contacts %}
+																<option value="{{user.id}}" name="{{user.firstName}} {{user.lastName}}">
+																	{{user.firstName}} {{user.lastName}}
+																</option>
+																{% endfor %}
+															</optgroup>
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<hr>
+											<div>
+												Contact Information
+											</div>
+											<hr>
+											<br>
+											<div class="row">
+												<div class="col-md-6 col-sm-6">
+													<div class="form-group">
+
+													</div>
+												</div>
+												<div class="col-md-6 col-sm-6">
+													<div class="form-group">
+
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6 col-sm-6">
+													<div class="form-group">
+
+													</div>
+												</div>
+												<div class="col-md-6 col-sm-6">
+													<div class="form-group">
+
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6 col-sm-6">
+													<div class="form-group">
+
+													</div>
+												</div>
+												<div class="col-md-6 col-sm-6">
+													<div class="form-group">
+
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-6 col-sm-6">
+													<div class="form-group">
+														<label class="control-label col-lg-2">Client Employee List</label>
+														<div class="col-lg-10 has-warning"></div>
+													</div>
+												</div>
+											</div>
+										</fieldset>
+									</div>
+								</div>
+								</div>
+								<!-- ADD MISC DEVICES TO NETWORKING / ADD COUNT TO WAP/SWITCHES -->
+								<div class="m-wizard__form-step" id="m_wizard_form_step_2">
+									<div class="row" style="padding-left:50px; padding-right:50px;">
+									<fieldset class="step" id="2">
+										<h6 class="form-wizard-title"><span class="form-wizard-count">2</span> Network Information <small class="display-block">A listing of all useful networking information</small></h6>
+										<div class="row" >
+											<div class="col-md-6 col-sm-6">
+												<label>Local IP:</label>
+
+													<input class="form-control" placeholder="Local IP Scheme - 192.x.x.x" id="LocalIP" type="text">
+
+											</div>
+											<div class="col-md-6 col-sm-6">
+												<label>External IP:</label>
+
+													<input class="form-control" placeholder="External IP" type="text">
+
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-6 col-sm-6">
+												<label>ISP:</label>
+
+													<select class="selectpicker" data-live-search="true" name="isp" id="isp" tabindex="-1">
+														<option>
+														</option>
+														<option value="Spectrum">
+															Charter/Spectrum
+														</option>
+														<option value="ATT">
+															ATT
+														</option>
+														<option value="Comcast">
+															Comcast
+														</option>
+														<option value="OtherDSL">
+															Other DSL/T1
+														</option>
+														<option value="OtherCable">
+															Other Cable
+														</option>
+														<option value="OtherFiber">
+															Other Fiber
+														</option>
+													</select>
+
+											</div>
+											<div class="col-md-6 col-sm-6">
+												<label>Speed Estimate:</label>
+												<div class="form-group">
+													<select aria-hidden="true" class="select ui-wizard-content select2-hidden-accessible" data-placeholder="In Mb" id="speed" name="brand" tabindex="-1">
+														<option>
+														</option>
+														<option value="1mbs">
+															&lt; 1Mbps
+														</option>
+														<option value="10mbs">
+															1 - 10 Mbps
+														</option>
+														<option value="100mbs">
+															10 - 100 Mbps
+														</option>
+														<option value="1000mbs">
+															100 - 1000 Mbps
+														</option>
+														<option value="Over1000mbs">
+															&gt; 1Gbps
+														</option>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div>
+											<hr>
+											Physical Networking
+											<hr>
+										</div>
+										<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Firewall:</label>
+												<button class="btn btn-info btn-sm" type="button" onclick="addAdditionFields('fwRow')"><span class="icon icon-plus2"></span></button>
+												<div class="row" id="fwRow">
+													<div class="col-md-4 col-sm-4">
+															<label>Brand:</label>
+															<select aria-hidden="true" id="fwbrand_0" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+
+															<label>Model</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" id="fwmodel_0" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+
+													</div>
+													<div class="col-md-3 col-sm-3">
+														<label>Replace?</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Replace?" id="fwreplace_0" name="fwreplace_0" tabindex="-1">
+																<option value="0">
+																	No
+																</option>
+																<option value="1">Yes</option>
+															</select>
+
+													</div>
+
+													</div>
+												<div id=""></div>
+											</div>
+										</div>
+										<br>
+										<hr>
+										<br>
+										<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Switches:</label>
+												<button class="btn btn-info btn-sm" type="button" onclick="addAdditionFields('fieldSW')"><span class="icon icon-plus2"></span></button>
+												<div class="row" id="">
+													<div class="col-md-4 col-sm-4">
+															<label>Brand:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+															<label>Model</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+													</div>
+													<div class="col-md-3 col-sm-3">
+														<label>Replace?</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Replace?" name="fwreplace_0" tabindex="-1">
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+															</select>
+
+													</div>
+
+													</div>
+
+
+											</div>
+										</div>
+										<br>
+										<hr>
+										<br>
+										<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Access Points::</label>
+												<button class="btn btn-info btn-sm" type="button" onclick="addAdditionFields('fieldAP')"><span class="icon icon-plus2"></span></button>
+												<div class="row" id="">
+													<div class="col-md-4 col-sm-4">
+															<label>Brand:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+															<label>Model</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+													</div>
+													<div class="col-md-3 col-sm-3">
+														<label>Replace?</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Replace?" name="fwreplace_0" tabindex="-1">
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+															</select>
+
+													</div>
+
+													</div>
+
+
+
+											</div>
+										</div>
+										<hr>
+									</fieldset>
+									</div>
+								</div>
+								<!-- ADD S/N / Service TAG Box - SOLUTION FOR MISC/WHITEBOX - RAID INFO -->
+								<div class="m-wizard__form-step" id="m_wizard_form_step_3">
+									<div class="row" style="padding-left:50px; padding-right:50px;">
+									<fieldset class="step" id="2">
+										<h6 class="form-wizard-title"><span class="form-wizard-count">2</span> Server Information <small class="display-block">A listing of all virtual and hardware servers</small></h6>
+										<div class="row" >
+											<div class="col-md-6 col-sm-6">
+												<label>Server Input 1:</label>
+													<input class="form-control" placeholder="" id="" type="text">
+											</div>
+											<div class="col-md-6 col-sm-6">
+												<label>Server Input 2:</label>
+													<input class="form-control" placeholder="" type="text">
+											</div>
+										</div>
+										<div>
+											<hr>
+											Server Information
+											<hr>
+										</div>
+										<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Server Hardware:</label>
+												<button class="btn btn-info btn-sm" type="button"><span class="icon icon-plus2"></span></button>
+												<div class="row">
+													<div class="col-md-4 col-sm-4">
+															<label>Brand:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+															<label>Model</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+													</div>
+													<div class="col-md-3 col-sm-3">
+														<label>Replace?</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Replace?" name="fwreplace_0" tabindex="-1">
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+															</select>
+
+													</div>
+
+													</div>
+												<br><hr><br>
+												<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Virtual Servers:</label>
+												<button class="btn btn-info btn-sm" type="button"><span class="icon icon-plus2"></span></button>
+												<div class="row">
+													<div class="col-md-4 col-sm-4">
+															<label>OS:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+
+															<label>Role</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+
+													</div>
+													</div>
+											</div>
+										</div>
+										<br>
+										<hr>
+										<br>
+
+										</div>
+										</div>
+									</fieldset>
+									</div>
+
+								<div class="tab-pane" id="desktop">
+									<div class="row">
+										<h4 class="info-text">Drop us a small description.</h4>
+										<div class="col-sm-6 col-sm-offset-1">
+											<div class="form-group label-floating is-empty">
+												<label class="control-label">Place description</label>
+												<textarea class="form-control" placeholder="" rows="9"></textarea> <span class="material-input"></span>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Example</label>
+												<p class="description">"The place is really nice. We use it every sunday when we go fishing. It is so awesome."</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="printers">
+
+								</div>
+								<div class="tab-pane" id="applications">
+
+								</div>
+								<div class="tab-pane" id="backups">
+
+								</div>
+							</div>
+								<!-- ONE FIELD FOR s/N-Tag FOR EACH MODEL GROUP (proc/mem) -->
+								<div class="m-wizard__form-step" id="m_wizard_form_step_4">
+									<div class="row" style="padding-left:50px; padding-right:50px;">
+									<fieldset class="step" id="2">
+										<h6 class="form-wizard-title"><span class="form-wizard-count">2</span> Desktop Information <small class="display-block">A listing of all in use workstations</small></h6>
+										<div class="row" >
+											<div class="col-md-6 col-sm-6">
+												<label>Desktop Input 1:</label>
+													<input class="form-control" placeholder="" id="" type="text">
+											</div>
+											<div class="col-md-6 col-sm-6">
+												<label>Desktop Input 2:</label>
+													<input class="form-control" placeholder="" type="text">
+											</div>
+										</div>
+										<div>
+											<hr>
+											Server Information
+											<hr>
+										</div>
+										<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Workstation Hardware:</label>
+												<button class="btn btn-info btn-sm" type="button"><span class="icon icon-plus2"></span></button>
+												<div class="row">
+													<div class="col-md-4 col-sm-4">
+															<label>Brand:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+															<label>Model</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+													</div>
+													<div class="col-md-3 col-sm-3">
+														<label>Count?</label>
+														<input type="text" class="form-control">
+													</div>
+
+													</div>
+												<br><hr><br>
+												<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Laptops:</label>
+												<button class="btn btn-info btn-sm" type="button"><span class="icon icon-plus2"></span></button>
+												<div class="row">
+													<div class="col-md-4 col-sm-4">
+															<label>OS:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+
+															<label>Role</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+
+													</div>
+													<div class="col-md-3 col-sm-3">
+
+															<label>Role</label>
+														<input type="text" class="form-control">
+
+													</div>
+													</div>
+											</div>
+										</div>
+										<br>
+										<hr>
+										<br>
+
+										</div>
+										</div>
+									</fieldset>
+									</div>
+
+								<div class="tab-pane" id="desktop">
+									<div class="row">
+										<h4 class="info-text">Drop us a small description.</h4>
+										<div class="col-sm-6 col-sm-offset-1">
+											<div class="form-group label-floating is-empty">
+												<label class="control-label">Place description</label>
+												<textarea class="form-control" placeholder="" rows="9"></textarea> <span class="material-input"></span>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Example</label>
+												<p class="description">"The place is really nice. We use it every sunday when we go fishing. It is so awesome."</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="printers">
+
+								</div>
+								<div class="tab-pane" id="applications">
+
+								</div>
+								<div class="tab-pane" id="backups">
+
+								</div>
+							</div>
+								<!-- Brand/Model - Shared(y/n) - Connection(usb/eth/wireless) - Phys Loc Guestimate -->
+								<div class="m-wizard__form-step" id="m_wizard_form_step_5">
+									<div class="row" style="padding-left:50px; padding-right:50px;">
+									<fieldset class="step" id="2">
+										<h6 class="form-wizard-title"><span class="form-wizard-count">2</span> Server Information <small class="display-block">A listing of all virtual and hardware servers</small></h6>
+										<div class="row" >
+											<div class="col-md-6 col-sm-6">
+												<label>Server Input 1:</label>
+													<input class="form-control" placeholder="" id="" type="text">
+											</div>
+											<div class="col-md-6 col-sm-6">
+												<label>Server Input 2:</label>
+													<input class="form-control" placeholder="" type="text">
+											</div>
+										</div>
+										<div>
+											<hr>
+											Server Information
+											<hr>
+										</div>
+										<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Server Hardware:</label>
+												<button class="btn btn-info btn-sm" type="button"><span class="icon icon-plus2"></span></button>
+												<div class="row">
+													<div class="col-md-4 col-sm-4">
+															<label>Brand:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+															<label>Model</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+													</div>
+													<div class="col-md-3 col-sm-3">
+														<label>Replace?</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Replace?" name="fwreplace_0" tabindex="-1">
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+															</select>
+
+													</div>
+
+													</div>
+												<br><hr><br>
+												<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Virtual Servers:</label>
+												<button class="btn btn-info btn-sm" type="button"><span class="icon icon-plus2"></span></button>
+												<div class="row">
+													<div class="col-md-4 col-sm-4">
+															<label>OS:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+
+															<label>Role</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+
+													</div>
+													</div>
+											</div>
+										</div>
+										<br>
+										<hr>
+										<br>
+
+										</div>
+										</div>
+									</fieldset>
+									</div>
+
+								<div class="tab-pane" id="desktop">
+									<div class="row">
+										<h4 class="info-text">Drop us a small description.</h4>
+										<div class="col-sm-6 col-sm-offset-1">
+											<div class="form-group label-floating is-empty">
+												<label class="control-label">Place description</label>
+												<textarea class="form-control" placeholder="" rows="9"></textarea> <span class="material-input"></span>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Example</label>
+												<p class="description">"The place is really nice. We use it every sunday when we go fishing. It is so awesome."</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="printers">
+
+								</div>
+								<div class="tab-pane" id="applications">
+
+								</div>
+								<div class="tab-pane" id="backups">
+
+								</div>
+							</div>
+								<!-- Name / Vendor / Type / Purpose / Notes-   -->
+								<div class="m-wizard__form-step" id="m_wizard_form_step_6">
+									<div class="row" style="padding-left:50px; padding-right:50px;">
+									<fieldset class="step" id="2">
+										<h6 class="form-wizard-title"><span class="form-wizard-count">2</span> Server Information <small class="display-block">A listing of all virtual and hardware servers</small></h6>
+										<div class="row" >
+											<div class="col-md-6 col-sm-6">
+												<label>Server Input 1:</label>
+													<input class="form-control" placeholder="" id="" type="text">
+											</div>
+											<div class="col-md-6 col-sm-6">
+												<label>Server Input 2:</label>
+													<input class="form-control" placeholder="" type="text">
+											</div>
+										</div>
+										<div>
+											<hr>
+											Server Information
+											<hr>
+										</div>
+										<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Server Hardware:</label>
+												<button class="btn btn-info btn-sm" type="button"><span class="icon icon-plus2"></span></button>
+												<div class="row">
+													<div class="col-md-4 col-sm-4">
+															<label>Brand:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+															<label>Model</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+													</div>
+													<div class="col-md-3 col-sm-3">
+														<label>Replace?</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Replace?" name="fwreplace_0" tabindex="-1">
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+															</select>
+
+													</div>
+
+													</div>
+												<br><hr><br>
+												<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Virtual Servers:</label>
+												<button class="btn btn-info btn-sm" type="button"><span class="icon icon-plus2"></span></button>
+												<div class="row">
+													<div class="col-md-4 col-sm-4">
+															<label>OS:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+
+															<label>Role</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+
+													</div>
+													</div>
+											</div>
+										</div>
+										<br>
+										<hr>
+										<br>
+
+										</div>
+										</div>
+									</fieldset>
+									</div>
+
+								<div class="tab-pane" id="desktop">
+									<div class="row">
+										<h4 class="info-text">Drop us a small description.</h4>
+										<div class="col-sm-6 col-sm-offset-1">
+											<div class="form-group label-floating is-empty">
+												<label class="control-label">Place description</label>
+												<textarea class="form-control" placeholder="" rows="9"></textarea> <span class="material-input"></span>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Example</label>
+												<p class="description">"The place is really nice. We use it every sunday when we go fishing. It is so awesome."</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="printers">
+
+								</div>
+								<div class="tab-pane" id="applications">
+
+								</div>
+								<div class="tab-pane" id="backups">
+
+								</div>
+							</div>
+								<!-- Software / Hardware (if local/ What device and connection) / Type (local/cloud/hybrid) / Method (Image Based/SS Based/File Level) / Retention Settings (estimate)  -->
+								<div class="m-wizard__form-steppane" id="m_wizard_form_step_7">
+									<div class="row" style="padding-left:50px; padding-right:50px;">
+									<fieldset class="step" id="2">
+										<h6 class="form-wizard-title"><span class="form-wizard-count">2</span> Server Information <small class="display-block">A listing of all virtual and hardware servers</small></h6>
+										<div class="row" >
+											<div class="col-md-6 col-sm-6">
+												<label>Server Input 1:</label>
+													<input class="form-control" placeholder="" id="" type="text">
+											</div>
+											<div class="col-md-6 col-sm-6">
+												<label>Server Input 2:</label>
+													<input class="form-control" placeholder="" type="text">
+											</div>
+										</div>
+										<div>
+											<hr>
+											Server Information
+											<hr>
+										</div>
+										<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Server Hardware:</label>
+												<button class="btn btn-info btn-sm" type="button"><span class="icon icon-plus2"></span></button>
+												<div class="row">
+													<div class="col-md-4 col-sm-4">
+															<label>Brand:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+															<label>Model</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+													</div>
+													<div class="col-md-3 col-sm-3">
+														<label>Replace?</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Replace?" name="fwreplace_0" tabindex="-1">
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+															</select>
+
+													</div>
+
+													</div>
+												<br><hr><br>
+												<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Virtual Servers:</label>
+												<button class="btn btn-info btn-sm" type="button"><span class="icon icon-plus2"></span></button>
+												<div class="row">
+													<div class="col-md-4 col-sm-4">
+															<label>OS:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+
+															<label>Role</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+
+													</div>
+													</div>
+											</div>
+										</div>
+										<br>
+										<hr>
+										<br>
+
+										</div>
+										</div>
+									</fieldset>
+									</div>
+
+								<div class="tab-pane" id="desktop">
+									<div class="row">
+										<h4 class="info-text">Drop us a small description.</h4>
+										<div class="col-sm-6 col-sm-offset-1">
+											<div class="form-group label-floating is-empty">
+												<label class="control-label">Place description</label>
+												<textarea class="form-control" placeholder="" rows="9"></textarea> <span class="material-input"></span>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Example</label>
+												<p class="description">"The place is really nice. We use it every sunday when we go fishing. It is so awesome."</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="printers">
+
+								</div>
+								<div class="tab-pane" id="applications">
+
+								</div>
+								<div class="tab-pane" id="backups">
+
+								</div>
+							</div>
+								<!-- Are we taking over phones? If no VendorData, If Yes SO MUCH JUNK -->
+								<div class="m-wizard__form-step" id="m_wizard_form_step_8">
+									<div class="row" style="padding-left:50px; padding-right:50px;">
+									<fieldset class="step" id="2">
+										<h6 class="form-wizard-title"><span class="form-wizard-count">2</span> Server Information <small class="display-block">A listing of all virtual and hardware servers</small></h6>
+										<div class="row" >
+											<div class="col-md-6 col-sm-6">
+												<label>Server Input 1:</label>
+													<input class="form-control" placeholder="" id="" type="text">
+											</div>
+											<div class="col-md-6 col-sm-6">
+												<label>Server Input 2:</label>
+													<input class="form-control" placeholder="" type="text">
+											</div>
+										</div>
+										<div>
+											<hr>
+											Server Information
+											<hr>
+										</div>
+										<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Server Hardware:</label>
+												<button class="btn btn-info btn-sm" type="button"><span class="icon icon-plus2"></span></button>
+												<div class="row">
+													<div class="col-md-4 col-sm-4">
+															<label>Brand:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+															<label>Model</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+													</div>
+													<div class="col-md-3 col-sm-3">
+														<label>Replace?</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Replace?" name="fwreplace_0" tabindex="-1">
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+															</select>
+
+													</div>
+
+													</div>
+												<br><hr><br>
+												<div class="row">
+											<div class="col-md-12 col-sm-12">
+												<label>Virtual Servers:</label>
+												<button class="btn btn-info btn-sm" type="button"><span class="icon icon-plus2"></span></button>
+												<div class="row">
+													<div class="col-md-4 col-sm-4">
+															<label>OS:</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Brand" name="fwbrand_0" tabindex="-1">												{% for item in FWBrand %}
+																<option value="{{item.id}}">
+																	{{item.name}}
+																</option>
+																{%endfor%}
+															</select>
+
+													</div>
+													<div class="col-md-5 col-sm-5">
+
+															<label>Role</label>
+															<select aria-hidden="true" class="form-control selectpicker bootstrap-select" data-placeholder="Model" name="fwmodel_0" tabindex="-1">												{% if FWModel %}
+																<option value="{{FWModel.id}}">
+																	{{FWModel.name}}
+																</option>
+																{%endif%}
+															</select>
+
+													</div>
+													</div>
+											</div>
+										</div>
+										<br>
+										<hr>
+										<br>
+
+										</div>
+										</div>
+									</fieldset>
+									</div>
+
+								<div class="tab-pane" id="desktop">
+									<div class="row">
+										<h4 class="info-text">Drop us a small description.</h4>
+										<div class="col-sm-6 col-sm-offset-1">
+											<div class="form-group label-floating is-empty">
+												<label class="control-label">Place description</label>
+												<textarea class="form-control" placeholder="" rows="9"></textarea> <span class="material-input"></span>
+											</div>
+										</div>
+										<div class="col-sm-4">
+											<div class="form-group label-floating">
+												<label class="control-label">Example</label>
+												<p class="description">"The place is really nice. We use it every sunday when we go fishing. It is so awesome."</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="tab-pane" id="printers">
+
+								</div>
+								<div class="tab-pane" id="applications">
+
+								</div>
+								<div class="tab-pane" id="backups">
+
+								</div>
+							</div>
+								<div class="wizard-footer float-right">
+									<div class="pull-right">
+										<input class="btn btn-next btn-fill btn-primary btn-wd" name="next" type="button" value="Next"> <input class="btn btn-finish btn-fill btn-primary btn-wd" name="finish" style="display: none;" type="button" value="Finish">
+									</div>
+									<div class="pull-left">
+										<input class="btn btn-previous btn-fill btn-default btn-wd disabled" name="previous" type="button" value="Previous">
+									</div>
+								</div>
+							</div>
+							</div>
+						</div>
+					</div>
+					{% endcomment %}
+				</div>
+					</form>
+				</div>
+		</div>
+
+	</div>
+		<script type="text/javascript">
+
+		function addToInput(text, field) {
+
+			document.getElementbyID(field).value = text;
+		}
+		var counter = 0;
+		function addAdditionFields(fieldid) {
+		    counter++;
+		    var cloneFields = document.getElementById(fieldid).cloneNode(true);
+
+		    cloneFields.id = fieldid+"_"+counter;
+
+
+			var field = cloneFields.childNodes;
+			//field.appendChild("<button class='btn btn-sm' onclick='this.parentNode.parentNode.removeChild(this.parentNode);'><span class=\"icon icon-minus\"></span>")
+
+			for (var i=0;i<field.length;i++) {
+
+			    var fieldName = field[i].name;
+			    if (fieldName) {
+                    fieldName = fieldName + counter;
+                    console.log(fieldName);
+                }
+			}
+			if (fieldid == 'fieldFW') {
+                var insertFields = document.getElementById('writeFW');
+            }
+            else if (fieldid == 'fieldSW') {
+                var insertFields = document.getElementById('writeSW');
+            }
+            else if (fieldid == 'fieldAP') {
+                var insertFields = document.getElementById('writeAP');
+            }
+			else {
+			    insertFields = ''
+			}
+            insertFields.parentNode.insertBefore(cloneFields,insertFields)
+		}
+
+		</script>
+
+
+		{% endblock %}
+
+

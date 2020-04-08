@@ -1,0 +1,204 @@
+{%  extends "layout.html" %}
+{% load static %}
+
+{% block styles %}
+
+<link href="{% static 'base/css/vendors/datatables/datatables.bundle.css' %}" rel="stylesheet" type="text/css" />
+
+{% endblock %}
+
+{% block pagejs %}
+
+<script src="{% static 'base/js/vendors/datatables/datatables.bundle.js' %}"></script>
+
+{% endblock %}
+
+{% block title %} Open Projects Listing {% endblock %}
+
+{% block main-content %}
+<!--Page Header-->
+
+				<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+					<!-- BEGIN: Subheader -->
+					<div class="m-subheader ">
+	<div class="d-flex align-items-center">
+ 		<div class="mr-auto">
+ 			<h3 class="m-subheader__title m-subheader__title--separator">Projects</h3>
+							<ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+					<li class="m-nav__item m-nav__item--home">
+						<a href="#" class="m-nav__link m-nav__link--icon">
+						   <i class="m-nav__link-icon fa fa-project-diagram"></i>
+						</a>
+					</li>
+											<li class="m-nav__separator">-</li>
+						<li class="m-nav__item">
+							<a href="" class="m-nav__link">
+								<span class="m-nav__link-text">All Projects</span>
+							</a>
+						</li>
+											<li class="m-nav__separator">-</li>
+
+											<li class="m-nav__separator">-</li>
+						<li class="m-nav__item">
+							<a href="" class="m-nav__link">
+								<span class="m-nav__link-text">Open Projects</span>
+							</a>
+						</li>
+									</ul>
+			 		</div>
+	</div>
+</div>
+					<!-- END: Subheader -->
+					<div class="m-content">
+						<div class="m-alert m-alert--icon m-alert--air m-alert--square alert alert-dismissible m--margin-bottom-30" role="alert">
+	<div class="m-alert__icon">
+		<i class="fa fa-exclamation"></i>
+	</div>
+	<div class="m-alert__text">
+		Alert Testing for Some Raison.
+	</div>
+</div>
+						<div class="m-portlet m-portlet--mobile">
+							<div class="m-portlet__head">
+								<div class="m-portlet__head-caption">
+								<div class="m-portlet__head-title">
+									<h3 class="m-portlet__head-text">
+										Open Projects
+									</h3>
+								</div>
+								</div>
+							</div>
+						<div class="m-portlet__body">
+							<div class="dataTables_wrapper dt-bootstrap4 no-footer">
+							<table class="table table-striped- table-bordered table-hover table-checkable dataTable no-footer dtr-inline" id="datatable">
+								<thead>
+									<tr>
+										<th>#</th>
+										<th>Title</th>
+										<th>Client</th>
+										<th>Started on</th>
+										<th>Status</th>
+										<th>Completed</th>
+										<th>Team</th>
+										<th class="text-center">Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>11</td>
+										<td>TestLine - something</td>
+										<td>
+											<h5 class="no-margin">
+												<a href="projects_list.htm#">Jane Elliott</a>
+											</h5>
+										</td>
+										<td>
+											April 04, 2016
+										</td>
+										<td>
+											<span class="label label-success">Active</span>
+										</td>
+										<td>
+											<div class="progress progress-xs">
+												<div class="progress-bar progress-bar-success progress-bar-striped active" style="width: 75%">
+													<span class="sr-only">75% Complete</span>
+												</div>
+											</div>
+										</td>
+										<td>
+											<img alt="" src="assets/images/faces/face5.png" class="img-rounded img-responsive img-xs">
+											<img alt="" src="assets/images/faces/face6.png" class="img-rounded img-responsive img-xs">
+											<img alt="" src="assets/images/faces/face7.png" class="img-rounded img-responsive img-xs">
+										</td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li><a href="projects_details.htm" target="_blank"><i class="icon-eye2"></i></a></li>
+												<li class="dropdown">
+													<a href="projects_list.htm#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i> <span class="caret"></span></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="projects_list.htm#"><i class="icon-checkmark3"></i> Mark as completed</a></li>
+														<li><a href="projects_list.htm#"><i class="icon-cross2"></i> Mark as incomplete</a></li>
+														<li class="divider"></li>
+														<li><a href="projects_list.htm#"><i class="icon-pencil6"></i> Edit</a></li>
+														<li><a href="projects_list.htm#"><i class="icon-trash"></i> Delete</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+									</tr>
+                                    {% for proj in projData %}
+
+									<tr><a href="{% url 'project' proj.id %}">
+                                        <td><a href="{% url 'project' proj.id %}">{{ proj.id }} </a></td>
+										<td>{{ proj.name }}</td>
+										<td>
+											<h5 class="no-margin">
+												<a href="projects_list.htm#">{{ proj.company.name }}</a>
+											</h5>
+										</td>
+										<td>
+                                            {{ proj.actualStart|truncatechars:10}}
+										</td>
+										<td>
+
+                                            {% if proj.status.name == 'On-Hold' %}
+											<span class="label label-default">{{ proj.status.name }}</span>
+                                            {% endif %}
+                                            {% if 'Progress' in proj.status.name %}
+                                            <span class="label label-success">{{ proj.status.name}}</span>
+										    {% endif %}
+                                            {% if 'Assigned' in proj.status.name %}
+                                            <span class="label label-info">{{ proj.status.name }}</span>
+										    {% endif %}
+                                            {% if 'Tech' in proj.status.name %}
+                                            <span class="label label-info">{{ proj.status.name }}</span>
+                                            {% endif %}
+                                        </td>
+										<td>
+											<div class="progress progress-xs">
+												<div class="progress-bar progress-bar-info bg-grey progress-bar-striped active" style="width: {{ proj.id }}%">
+													<span class="sr-only">{{ proj.id }}</span>
+												</div>
+											</div>
+										</td>
+										<td>
+											<div>
+                                                <span class="">{{ proj.team }}</span>
+                                            </div>
+										</td>
+										<td class="text-center">
+											<ul class="icons-list">
+												<li><a href="projects_details.htm" target="_blank"><i class="icon-eye2"></i></a></li>
+												<li class="dropdown">
+													<a href="projects_list.htm#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-menu7"></i> <span class="caret"></span></a>
+													<ul class="dropdown-menu dropdown-menu-right">
+														<li><a href="projects_list.htm#"><i class="icon-checkmark3"></i> Mark as completed</a></li>
+														<li><a href="projects_list.htm#"><i class="icon-cross2"></i> Mark as incomplete</a></li>
+														<li class="divider"></li>
+														<li><a href="projects_list.htm#"><i class="icon-pencil6"></i> Edit</a></li>
+														<li><a href="projects_list.htm#"><i class="icon-trash"></i> Remove</a></li>
+													</ul>
+												</li>
+											</ul>
+										</td>
+                                    </a></tr>
+                                    {% endfor %}
+
+
+
+								</tbody>
+							</table>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				</div>
+
+
+
+
+
+
+        {% endblock %}

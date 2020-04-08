@@ -1,0 +1,179 @@
+	{% extends "layout.html" %}
+	{% block title %} Open Projects Listing {% endblock %}
+	{% load static %}
+
+	{% block style %}
+	<link href="{% static 'base/css/vendors/select/bootstrap-select.css' %}" rel="stylesheet">
+	{% endblock %}
+
+	{% block pagejs %}
+
+	<script src="{% static 'base/js/jquery.validate.js' %}"></script>
+	<script src="{% static 'base/js/additional-methods.js' %}"></script>
+
+	<script src="{% static 'base/js/vendors/select/bootstrap-select.js' %}"></script>
+
+	{% endblock %}
+
+	{% block main-content %}
+	<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+		<!-- BEGIN: Subheader -->
+		<div class="m-subheader ">
+		<div class="d-flex align-items-center">
+			<div class="mr-auto">
+				<h3 class="m-subheader__title m-subheader__title--separator"><i class="fa fa-exclamation"></i> CRITICAL Ticket <i class="fa fa-exclamation"></i></h3>
+					<ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+						<li class="m-nav__item m-nav__item--home">
+							<a href="#" class="m-nav__link m-nav__link--icon">
+							   <i class="m-nav__link-icon fa fa-ticket-alt"></i>
+							</a>
+						</li>
+					</ul>
+			</div>
+		</div>
+		</div>
+	<!-- END: Subheader -->
+
+
+		<div class="m-content">
+
+			<div class="m-portlet m-portlet--full-height">
+				<!-- main card -->
+				<div class="m-portlet__head">
+					<div class="m-portlet__head-caption">
+					<div class="m-portlet__head-title">
+						<h3 class="m-portlet__head-text">
+							Enter The Details:
+						</h3>
+					</div>
+					<div class="m-portlet__head-tools">
+						<ul class="m-portlet__nav">
+							<li class="m-portlet__nav-item">
+								<a href="#" data-toggle="m-tooltip" class="m-portlet__nav-link m-portlet__nav-link--icon" data-direction="left" data-width="auto" title="" data-original-title="Below will allow you to select pre-built forms for ticketing, or select 'Create Ticket' for a default ticket.">
+									<i class="fa fa-info"></i>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				</div>
+
+
+
+
+					<form id="form-wizard-onboarding" method="post" name="form-wizard-onboarding m_form" id="" novalidate="novalidate">
+						{% csrf_token %}
+
+					</form>
+
+
+
+
+
+
+				<div class="m-portlet--body">
+							<div class="m-portlet__body">
+								<div class="alert alert-danger alert-dismissible fade show" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									</button>
+									<strong>WARNING</strong> You are creating a <b>CRITICAL TICKET</b>. This type of ticket is only if several people are unable to work, or the business is unable to operate.  Abuse of this will remove the ability for you to create critical tickets.
+								</div>
+							</div>
+								<form class="m-form m-form--fit m-form--label-align-right m-form--group-seperator-dashed">
+									{% csrf_token %}
+										<div class="m-portlet__body">
+											<div class="form-group m-form__group row">
+
+												<div class="col-lg-6">
+													<label>Ticket Contact Name:</label>
+													<input type="input" class="form-control m-input" value="{{ userData.firstName }} {{ userData.lastName }}">
+													<span class="m-form__help"></span>
+												</div>
+												<div class="col-lg-6">
+													<label class="">Company Name:</label>
+													<input type="input" class="form-control m-input" value="{{ companyData.0.name }}">
+													<span class="m-form__help"></span>
+												</div>
+
+												<div class="col-lg-6">
+													<label>Email Address:</label>
+													<input type="email" class="form-control m-input" value="{% for item in userData.communicationItems %}
+														{% if item.communicationType == 'Email' %}
+														{{ item.value }}
+														{% endif %}
+														{%endfor%}
+													">
+													<span class="m-form__help"></span>
+												</div>
+												<div class="col-lg-3">
+													<label class="">Contact Phone Number:</label>
+													<input type="email" class="form-control m-input" value="
+														{% for item in userData.communicationItems %}
+														{% if item.communicationType == 'Phone' %}
+														{{ item.value }}
+														{% endif %}
+														{%endfor%}">
+													<span class="m-form__help"></span>
+
+												</div>
+												<div class="col-lg-3">
+													<label class="">Company Phone Number:</label>
+													<input type="email" class="form-control m-input" value="{{companyData.0.phoneNumber}}">
+													<span class="m-form__help"></span>
+												</div>
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-12">
+													<label>Ticket Title:</label>
+													<div class="m-input-icon m-input-icon--right">
+														<input type="text" class="form-control m-input" placeholder="Enter a summary of your issue">
+														<span class="m-input-icon__icon m-input-icon__icon--right"><span></span></span>
+														<span class="m-form__help"></span>
+													</div>
+												</div>
+												<div class="col-lg-12">
+													<label class="">Ticket Details:</label>
+													<div class="m-input-icon m-input-icon--right">
+														<textarea class="form-control m-input" placeholder="Please enter as much detail as possible about the issues you are encountering as well as any remediation steps you have attempted"></textarea>
+														<span class="m-input-icon__icon m-input-icon__icon--right"><span><i class="fa fa-pencil-alt"></i></span></span>
+													</div>
+												</div>
+											</div>
+											<div class="form-group m-form__group row">
+												<div class="col-lg-6"><label class="">Submit Screenshot/Attachement:</label>
+<div class="custom-file">
+													<input type="file" class="custom-file-input" id="customFile">
+													<label class="custom-file-label" for="customFile">Choose file</label>
+												</div>
+												</div>
+											</div>
+										</div>
+										<div class="m-portlet__foot m-portlet__no-border m-portlet__foot--fit">
+											<div class="m-form__actions m-form__actions--solid m-form++actions--center">
+<div class="row">
+													<div class="col-5">
+													</div>
+													<div class="col-6">
+														<button type="submit" class="btn m-btn m-btn--wide btn-primary">Submit</button>
+														<button type="reset" class="btn m-btn m-btn--wide btn-accent">Cancel</button>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+				</div>
+		</div>
+
+			<p>dump:{% for item in companyData %}
+			{{ item }}
+			{% endfor %}
+			</p>
+			<br><br>
+
+	</div>
+
+		{% endblock %}
+
+

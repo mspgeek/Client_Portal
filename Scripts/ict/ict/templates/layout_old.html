@@ -1,0 +1,110 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>{% block title %} INTELLICOMP {% endblock %}</title>
+	<link href="{% static "base/assets/images/intellicomp.ico" %}" rel="apple-touch-icon" type="image/png" sizes="144x144">
+	<link href="{% static "base/assets/images/intellicomp.ico" %}" rel="apple-touch-icon" type="image/png" sizes="114x114">
+	<link href="{% static "base/assets/images/intellicomp.ico" %}" rel="apple-touch-icon" type="image/png" sizes="72x72">
+	<link href="{% static "base/assets/images/intellicomp.ico" %}" rel="apple-touch-icon" type="image/png">
+	<link href="{% static "base/assets/images/intellicomp.ico" %}" rel="icon" type="image/png">
+	<link href="{% static "base/assets/images/intellicomp.ico" %}" rel="shortcut icon">
+{% block css %}
+	<!---HTMLTEXT-->
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/core.css" %}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/assets/fonts/fonts.css" %}">
+    <link type="text/css" rel="stylesheet" href="{% static "base/assets/icons/icomoon/icomoon.css"%}">
+    <link type="text/css" rel="stylesheet" href="{% static "base/css/animate.min.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/bootstrap.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/bootstrap-grid.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/bootstrap-reboot.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/layout.css"%}">
+
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/bootstrap-extended.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/components.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/plugins.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/loaders.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/responsive.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/color-system.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/fancybox/jquery.fancybox.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/core.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/extra/gsdk-bootstrap-wizard.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static "base/css/extra/demo.css"%}">
+	<link type="text/css" rel="stylesheet" href="{% static 'base/css/bootstrap-select.css' %}">
+{% endblock %}
+	<!-- Global stylesheets
+
+	<!-- /global stylesheets --></head>
+<body class="material-menu" id="top">
+	<div id="preloader">
+		<div id="status">
+			<div class="loader">
+				<div class="loader-inner ball-pulse">
+				  <div class="bg-blue"></div>
+				  <div class="bg-amber"></div>
+				  <div class="bg-success"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include "base/base_sidebar.html" %}
+	
+	<!--Page Container-->
+	<section class="main-container">	
+			<!--Page Header-->
+		{% block main-content %}
+
+
+		{% endblock %}
+		<!--Footer -->
+
+		<!--/Footer-->
+		
+	</section>
+	<!--/Page Container-->
+
+<a id="scrollTop" href="index.htm#top"><i class="icon-arrow-up12"></i></a>	
+
+<!-- Global scripts -->
+{% block js %}
+<script src="{% static "base/js/jquery.js" %}"></script>
+
+
+<script src="{% static 'base/js/popper.js' %}"></script>
+<script src="{% static "base/js/bootstrap.js" %}"></script>
+<script src="{% static 'base/js/bootstrap.bundle.js' %}"></script>
+<script src="{% static "base/js/jquery.ui.js" %}"></script>
+<script src="{% static "base/js/nav.accordion.js" %}\"></script>
+<script src="{% static "base/js/hammerjs.js" %}"></script>
+<script src="{% static "base/js/jquery.hammer.js" %}\"></script>
+<script src="{% static "base/js/scrollup.js" %}"></script>
+<script src="{% static "base/js/jquery.slimscroll.js" %}\"></script>
+<script src="{% static "base/js/smart-resize.js" %}"></script>
+<script src="{% static "base/js/blockui.min.js" %}\"></script>
+<script src="{% static "base/js/wow.min.js" %}"></script>
+<script src="{% static "base/js/fancybox.min.js" %}\"></script>
+<script src="{% static "base/js/venobox.js" %}"></script>
+<script src="{% static "base/js/extra/jquery.validate.min.js" %}"></script>
+<script src="{% static "base/js/extra/jquery.bootstrap.wizard.js" %}"></script>
+<script src="{% static "base/js/extra/gsdk-bootstrap-wizard.js" %}"></script>
+<script src="{% static "base/js/forms/uniform.min.js" %}\"></script>
+<script src="{% static "base/js/forms/switchery.js" %}"></script>
+<script src="{% static "base/js/forms/select2.min.js" %}\"></script>
+<script src="{% static "base/js/core.js" %}"></script>
+<script src="{% static "base/js/forms/form.min.js" %}"></script>
+
+<script src="{% static "base/js/forms/pages/form_select2.js" %}"></script>
+<script src="{% static 'base/js/bootstrap-select.js' %}"></script>
+
+
+	<!-- /global scripts -->
+{% endblock %}
+
+<!-- /page scripts -->
+</body>
+</html>

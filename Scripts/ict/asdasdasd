@@ -1,0 +1,5 @@
+{
+  "code": "ConnectWiseApi",
+  "message": "A potentially dangerous Request.Path value was detected from the client (<).",
+  "errors": null
+}

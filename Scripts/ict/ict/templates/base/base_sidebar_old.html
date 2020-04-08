@@ -1,0 +1,84 @@
+{% block base_sidebar %}
+<header class="main-nav clearfix">
+		<div class="top-search-bar">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						<div class="search-input-addon">
+							<span class="addon-icon"><i class="icon-search4"></i></span>
+							<input type="text" class="form-control top-search-input" placeholder="Search">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="navbar-left pull-left">
+			<div class="clearfix">
+				<ul class="left-branding pull-left">
+					<li><span class="left-toggle-switch visible-handheld"><i class="icon-menu7"></i></span></li>
+					<li>
+						<a href="../index.htm"><div class="logo"></div></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+	</header>
+
+	<!--sidebar-->
+	<aside class="sidebar">
+		<div class="left-aside-container">
+			<div class="user-profile-container">
+				<div class="user-profile clearfix">
+					<div class="admin-user-thumb">
+						<img src="assets/images/faces/face1.png" alt="admin" class="img-circle">
+					</div>
+					<div class="admin-user-info">
+						<ul class="user-info">
+							<li><a href="../index.htm#" class="text-semibold text-size-large">Kevin Khan</a></li>
+							<li><a href="../index.htm#"><small>Best CEO Evar!</small></a></li>
+						</ul>
+						<div class="logout-icon"><a href="login_simple.htm"><i class="icon-exit2"></i></a></div>
+					</div>
+
+				</div>
+			</div>
+			<ul class="sidebar-accordion">
+				<li class="list-title">Main</li>
+				<li>
+					<a href="{% url 'index' %}"><i class="icon-display4"></i><span class="list-label"> Dashboards</span></a>
+				</li>
+
+				<li class="list-title">Apps</li>
+				<li><a href="../index.htm#"><i class="icon-briefcase"></i> <span>Projects</span></a>
+					<ul>
+						<li><a href="{% url 'project_list' %}">Projects list</a></li>
+						<li><a href="{% url 'project_detail' %}">Project details</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="../index.htm#"><i class="icon-cash3"></i> <span>Onboarding</span></a>
+					<ul>
+						<li><a href="{% url 'onboarding' %}">Onboarding Wizard</a></li>
+						<li><a href="#">Onboarding List</a></li>
+					</ul>
+				</li>
+
+
+
+
+
+				<li class="list-title">Pages</li>
+				<li><a href="page_gallery.htm"><i class="icon-image3"></i> <span>Media gallery</span></a></li>
+				<li><a href="page_pricing_tables.htm"><i class="icon-cash"></i> <span>Something Else</span></a></li>
+				<li><a href="page_search.htm"><i class="icon-search4"></i> <span>search</span></a></li>
+				<li><a href="page_support.htm"><i class="icon-lifebuoy"></i> <span>Support</span></a></li>
+				<li><a href="page_knowledgebase.htm"><i class="icon-help"></i> <span>Knowledgebase</span></a></li>
+
+			</ul>
+		</div>
+	</aside>
+	<!--/sidebar-->
+
+{% endblock %}

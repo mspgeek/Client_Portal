@@ -1,0 +1,29 @@
+language: python
+sudo: false
+cache: pip
+
+python:
+  - 3.6
+
+services:
+  - postgresql
+  - redis-server
+
+before_script:
+  - psql -c "CREATE DATABASE viewflow;" -U postgres
+
+before_install:
+  - export DATABASE_URL=postgres://postgres@localhost/viewflow
+  - export REDIS_CACHE_URL=redis://127.0.0.1:6379/1
+
+install:
+  - pip install tox
+  - pip install coveralls
+
+script:
+  - tox --skip-missing-interpreters -- coverage run --append --branch --source=viewflow manage.py test tests
+  - coveralls
+
+branches:
+  only:
+    - master

@@ -1,0 +1,31 @@
+{% extends 'demo/base_module.html' %}
+
+{% block content %}
+<div class="row">    
+    <div class="col l8 m12">
+        <div class="card-panel form-card">
+            <h3>Viewflow demo</h3>
+            <a href="https://github.com/viewflow/viewflow" target="_blank"><i class="glyphicon glyphicon-edit"></i> Source code on Github</a>
+            <ul>
+                <li>
+                    <a href="https://github.com/viewflow/viewflow/blob/master/demo/helloworld" target="_blank">HelloWorld</a>  - Viewflow introduction sample
+                </li>
+                <li>
+                    <a href="https://github.com/viewflow/viewflow/blob/master/demo/shipment" target="_blank">Shipment</a> - Automate shipment process for ecommerce website
+                </li>
+                <li>
+                    <a href="https://github.com/viewflow/viewflow/blob/master/demo/customnode" target="_blank">Dynamic split</a> -  Custom flow node example
+                </li>
+            </ul>
+            {% if not user.is_authenticated %}Please, log in to continue...{% endif %}
+        </div>
+    </div>
+    <div class="col l4 m12">
+        <div class="card-panel">
+            <div class="card-title">Django-Viewflow</div>
+            <p>Easy to use, programmable workflow framework on top of Django</p>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
