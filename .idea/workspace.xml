@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7e2417bd-b2b6-4265-825f-c8fa02a45f00" name="Default" comment="test" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/handlebars/node_modules" />
+    <handled-path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/markdown/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/Scripts/ict/extra/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/ict/static/base/assets/editors/codemirror/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/animate.css/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/autosize/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/block-ui/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/bootstrap-datepicker/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/bootstrap-daterangepicker/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/bootstrap-datetime-picker/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/bootstrap-markdown/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/bootstrap-maxlength/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/bootstrap-notify/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/bootstrap-select/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/bootstrap-switch/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/bootstrap-timepicker/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/bootstrap-touchspin/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/bootstrap/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/chart.js/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/chartist/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/clipboard/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/counterup/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/dropzone/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/es6-promise-polyfill/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/handlebars/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/inputmask/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/ion-rangeslider/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/jquery-form/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/jquery-validation/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/jquery.repeater/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/jquery/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/js-cookie/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/jstree/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/markdown/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/moment/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/morris.js/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/nouislider/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/owl.carousel/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/perfect-scrollbar/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/popper.js/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/raphael/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/select2/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/socicon/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/summernote/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/sweetalert2/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/tether/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/toastr/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/tooltip.js/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/typeahead.js/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/waypoints/package.json" />
+      <path value="$PROJECT_DIR$/Scripts/ict/newTemplate/classic/vendors/wnumb/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectId" id="1XmECT9T6s9qItwkMi7EYJ13bEG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Development\Applications\onboard\Scripts\ict\ict\templates\ticketing" />
+      <recent name="F:\Development\Applications\onboard\Scripts\ict\ict\templates\ticketing\type" />
+      <recent name="F:\Development\Applications\onboard\Scripts\ict\ict\templates\error" />
+      <recent name="F:\Development\Applications\onboard\Scripts\ict\ict\templates\data" />
+      <recent name="F:\Development\Applications\onboard\Scripts\ict\ict\templates\base" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Development\Applications\onboard\Scripts\ict\ict\static\base\js" />
+      <recent name="F:\Development\Applications\onboard\Scripts\ict\ict\static\base\js\vendors" />
+      <recent name="F:\Development\Applications\onboard\Scripts\ict\ict\static\base\css\vendors\popper" />
+      <recent name="F:\Development\Applications\onboard\Scripts\ict\ict\static\base\css\vendors\select" />
+      <recent name="F:\Development\Applications\onboard\Scripts\ict\ict\static\base\js\vendors\select" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="onboard" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Scripts/ict/ict" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Scripts/ict/ict/test.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.test" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7e2417bd-b2b6-4265-825f-c8fa02a45f00" name="Default" comment="" />
+      <created>1532616515042</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1532616515042</updated>
+    </task>
+    <task id="LOCAL-00001" summary="test">
+      <created>1558555791909</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1558555791909</updated>
+    </task>
+    <task id="LOCAL-00002" summary="test">
+      <created>1565797380671</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1565797380671</updated>
+    </task>
+    <task id="LOCAL-00003" summary="test">
+      <created>1567110950095</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1567110950095</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="781" y="343" key="SettingsEditor" timestamp="1586303628563">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="781" y="343" key="SettingsEditor/-1920.352.1920.1040/2560.352.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1586303628563" />
+    <state x="781" y="343" key="SettingsEditor/2560.352.1920.1040/0.0.2560.1400/-1920.352.1920.1040@0.0.2560.1400" timestamp="1583784671614" />
+    <state x="976" y="525" key="com.intellij.ide.util.TipDialog" timestamp="1586303223247">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="976" y="525" key="com.intellij.ide.util.TipDialog/-1920.352.1920.1040/2560.352.1920.1040/0.0.2560.1400@0.0.2560.1400" timestamp="1586303223247" />
+    <state x="976" y="525" key="com.intellij.ide.util.TipDialog/0.0.2560.1400/2560.196.1920.1040/-1920.213.1920.1040@0.0.2560.1400" timestamp="1581642747160" />
+    <state x="976" y="525" key="com.intellij.ide.util.TipDialog/2560.352.1920.1040/0.0.2560.1400/-1920.352.1920.1040@0.0.2560.1400" timestamp="1583376888158" />
+  </component>
+</project>
