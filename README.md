@@ -29,4 +29,5 @@ Once you've added those, you can rerun  the server and then test login.
 #HOWTOAPIKEY
 Create the api key inside of manage, and the proper method of encoding is companyid+pubkey:privkey  Once you have that fully correct then you can go to base64encode.com  to encode it should spit something out like Gjh32048ghqw3gJHQ3g9h354yg==
 
-Edit the CW_API_KEY to "Basic (apikeyhere)" and then add the clientID from the dev portal and it should function.  
+Edit the CW_API_KEY to "Basic (apikeyhere)" and then add the clientID from the dev portal and it should function.  so it should look liek this (fake fyi)
+CW_API_KEY = "Basic bGFidGVjaGdlZWtfZithZVJyVzhBZXU5bVZtQnVGOmtRWkpGaIeUU0YWRUMDA="
