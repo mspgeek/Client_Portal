@@ -12,8 +12,11 @@ You need Python installed and pip installed (can be installed from the python.or
 important commands (CMD as Administrator)
 
 pip install django
+
 pip install requests
+
 pip install requests_toolbelt
+
 pip install django-phone-filter
 
 thats SHOULD be it, but if the  commands below error out ping me with the message so I can  see if its something missing
